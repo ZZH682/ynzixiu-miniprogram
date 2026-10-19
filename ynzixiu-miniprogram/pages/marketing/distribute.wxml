@@ -1,0 +1,58 @@
+<view class="hero">
+  <view class="hero-label">累计收益（元）</view>
+  <view class="hero-num num">{{totalEarn}}</view>
+  <view class="hero-extra">
+    <view class="hero-item"><text class="hero-k">可提现</text><text class="hero-v num">¥{{available}}</text></view>
+    <view class="hero-item"><text class="hero-k">已提现</text><text class="hero-v num">¥{{withdrawn}}</text></view>
+    <view class="hero-item"><text class="hero-k">佣金比例</text><text class="hero-v num">{{rate}}%</text></view>
+  </view>
+  <view class="btn hero-btn" hover-class="btn-hover" bindtap="withdraw">申请提现</view>
+</view>
+
+<view class="card code-card">
+  <view class="code-head">
+    <view>
+      <view class="code-title">我的推广码</view>
+      <view class="code-sub">好友报名时填写 / 扫码，自动记为你的推荐学员</view>
+    </view>
+    <view class="code-value num">{{code || '登录后生成'}}</view>
+  </view>
+  <view class="btn btn-ghost code-btn" hover-class="btn-hover" bindtap="copyCode">{{code ? '复制推广码' : '登录生成推广码'}}</view>
+  <view class="code-note">正式版：分享专属海报二维码，好友扫码进入小程序即绑定关系，报名成功后佣金到账。</view>
+</view>
+
+<view class="section">
+  <view class="section-head">
+    <text class="section-title">推广明细</text>
+    <text class="section-more">共 {{team.length}} 人</text>
+  </view>
+  <view class="card team-list">
+    <view class="team" wx:for="{{team}}" wx:key="name">
+      <view class="team-main">
+        <view class="team-name">{{item.name}}</view>
+        <view class="team-meta">{{item.course}} · {{item.joined}} 加入</view>
+      </view>
+      <view class="team-side">
+        <text class="tag {{item.status === '已报名' ? 'tag-good' : 'tag-warm'}}">{{item.status}}</text>
+        <text wx:if="{{item.earn}}" class="team-earn num">+¥{{item.earn}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{withdraws.length}}" class="section">
+  <view class="section-head">
+    <text class="section-title">提现记录</text>
+  </view>
+  <view class="card team-list">
+    <view class="team" wx:for="{{withdraws}}" wx:key="id">
+      <view class="team-main">
+        <view class="team-name num">¥{{item.amount}}</view>
+        <view class="team-meta">{{item.note}}</view>
+      </view>
+      <view class="team-side"><text class="tag tag-warm">{{item.status}}</text></view>
+    </view>
+  </view>
+</view>
+
+<view class="demo-note">演示版本 · 收益与明细为示例，正式版由服务端结算</view>

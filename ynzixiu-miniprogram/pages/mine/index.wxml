@@ -1,0 +1,87 @@
+<view class="head" hover-class="{{user ? '' : 'btn-hover'}}" bindtap="goLogin">
+  <view class="avatar">{{user ? '学' : ''}}</view>
+  <view class="head-main" wx:if="{{user}}">
+    <view class="head-name num">学员 {{phoneText}}</view>
+    <view class="head-sub">{{sinceText}} 加入</view>
+  </view>
+  <view class="head-main" wx:else>
+    <view class="head-name">登录 / 注册</view>
+    <view class="head-sub">登录后查看课程、订单和学习进度</view>
+  </view>
+  <text wx:if="{{!user}}" class="row-arrow head-arrow">›</text>
+</view>
+
+<view class="counts card">
+  <view class="count" bindtap="go" data-url="/pages/study/index" data-auth="1">
+    <text class="count-num num">{{counts.courses}}</text>
+    <text class="count-k">我的课程</text>
+  </view>
+  <view class="count" bindtap="go" data-url="/pages/signup/list">
+    <text class="count-num num">{{counts.signups}}</text>
+    <text class="count-k">我的预约</text>
+  </view>
+  <view class="count" bindtap="go" data-url="/pages/quiz/errors">
+    <text class="count-num num">{{counts.wrong}}</text>
+    <text class="count-k">错题</text>
+  </view>
+</view>
+
+<view class="card menu">
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/study/index" data-auth="1">
+    <text class="row-main">学习中心</text>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/order/list" data-auth="1">
+    <text class="row-main">我的订单</text>
+    <text wx:if="{{pendingBalance}}" class="tag tag-warm">{{pendingBalance}} 笔待付尾款</text>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/signup/list">
+    <text class="row-main">我的预约</text>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/quiz/errors">
+    <text class="row-main">错题本</text>
+    <text class="row-arrow">›</text>
+  </view>
+</view>
+
+<view class="card menu">
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/live/index">
+    <text class="row-main">直播课堂</text>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/message/index">
+    <text class="row-main">消息中心</text>
+    <view wx:if="{{unread}}" class="badge num">{{unread}}</view>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/marketing/index">
+    <text class="row-main">营销活动</text>
+    <text class="row-sub">分销 · 拼团 · 领券 · 海报</text>
+    <text class="row-arrow">›</text>
+  </view>
+</view>
+
+<view class="card menu">
+  <view class="row" hover-class="btn-hover" bindtap="callPhone">
+    <text class="row-main">咨询热线</text>
+    <text class="row-value num">{{hotline}}</text>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/admin/import">
+    <text class="row-main">内容批量录入</text>
+    <text class="row-sub">题库 · 课程 · 资讯</text>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/about/index">
+    <text class="row-main">关于我们</text>
+    <text class="row-arrow">›</text>
+  </view>
+</view>
+
+<view wx:if="{{user}}" class="btn btn-line logout" hover-class="btn-hover" bindtap="logout">退出登录</view>
+<view class="demo-note">
+  <text>演示版本 · 数据仅保存在本机</text>
+  <text class="reset" bindtap="resetDemo">重置演示数据</text>
+</view>

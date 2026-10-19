@@ -1,0 +1,34 @@
+.head { display: flex; align-items: center; padding: 48rpx 32rpx 40rpx; background: var(--card); margin-bottom: 20rpx; }
+.avatar { width: 112rpx; height: 112rpx; border-radius: 50%; background: var(--brand-weak); color: var(--brand); font-size: 44rpx; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.head-main { flex: 1; margin-left: 28rpx; }
+.head-name { font-size: 36rpx; font-weight: 700; }
+.head-sub { margin-top: 6rpx; font-size: 24rpx; color: var(--text-3); }
+.head-arrow { font-size: 40rpx; }
+
+.counts { display: flex; margin: 0 32rpx 20rpx; padding: 28rpx 0; }
+.count { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.count + .count { border-left: 1rpx solid var(--line); }
+.count-num { font-size: 40rpx; font-weight: 700; }
+.count-k { font-size: 23rpx; color: var(--text-3); margin-top: 2rpx; }
+
+.menu { margin: 0 32rpx 20rpx; padding-top: 0; padding-bottom: 0; }
+.menu .row-main { font-size: 29rpx; }
+.menu .tag { margin-right: 0; }
+.row-value { font-size: 26rpx; color: var(--text-2); }
+.row-sub { font-size: 23rpx; color: var(--text-3); margin-right: 8rpx; }
+.badge {
+  min-width: 34rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0 10rpx;
+  border-radius: 999rpx;
+  background: var(--bad);
+  color: #fff;
+  font-size: 22rpx;
+  text-align: center;
+  margin-right: 8rpx;
+}
+
+.logout { margin: 40rpx 32rpx 0; color: var(--text-2); }
+.demo-note { display: flex; flex-direction: column; align-items: center; padding-top: 32rpx; }
+.reset { margin-top: 10rpx; color: var(--brand); }

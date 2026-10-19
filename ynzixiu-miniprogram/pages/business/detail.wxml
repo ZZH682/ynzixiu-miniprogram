@@ -1,0 +1,65 @@
+<import src="/templates/course.wxml" />
+
+<view class="head" style="background:{{b.tint}}">
+  <view class="head-char" style="color:{{b.color}}">{{b.char}}</view>
+  <view class="head-name">{{b.name}}</view>
+  <view class="head-summary">{{b.summary}}</view>
+  <view class="head-tags">
+    <text class="tag head-tag" style="color:{{b.color}}" wx:for="{{b.tags}}" wx:key="*this">{{item}}</text>
+  </view>
+</view>
+
+<view class="section">
+  <view class="card">
+    <view class="block-label">适合谁</view>
+    <view class="block-text">{{b.audience}}</view>
+    <view class="block-label gap">我们怎么帮你</view>
+    <view class="block-text">{{b.intro}}</view>
+    <view class="offers">
+      <view class="offer" wx:for="{{b.offers}}" wx:key="*this">
+        <view class="offer-dot" style="background:{{b.color}}"></view>
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="section" wx:if="{{courses.length}}">
+  <view class="section-head"><text class="section-title">相关课程</text></view>
+  <view class="card list-card">
+    <block wx:for="{{courses}}" wx:key="id">
+      <template is="course-row" data="{{c: item}}" />
+    </block>
+  </view>
+</view>
+
+<view class="section" wx:if="{{news.length}}">
+  <view class="section-head"><text class="section-title">政策资讯</text></view>
+  <view class="card list-card">
+    <view class="row" wx:for="{{news}}" wx:key="id" hover-class="btn-hover" bindtap="goNews" data-id="{{item.id}}">
+      <view class="row-main">
+        <view class="ellipsis news-title">{{item.title}}</view>
+        <view class="news-meta">{{item.date}} · {{item.views}} 阅读</view>
+      </view>
+      <text class="row-arrow">›</text>
+    </view>
+  </view>
+</view>
+
+<view class="section" wx:if="{{story}}">
+  <view class="section-head">
+    <text class="section-title">上岸故事</text>
+    <text class="section-more">示例</text>
+  </view>
+  <view class="card story">
+    <view class="story-result" style="color:{{b.color}}">{{story.result}}</view>
+    <view class="story-quote">“{{story.quote}}”</view>
+    <view class="story-who">{{story.name}} · {{story.tag}}</view>
+  </view>
+</view>
+
+<view class="bottom-space"></view>
+<view class="bottom-bar">
+  <view class="btn btn-line bar-call" hover-class="btn-hover" bindtap="callPhone">电话咨询</view>
+  <view class="btn btn-primary bar-main" hover-class="btn-hover" bindtap="goSignup">预约一对一规划</view>
+</view>

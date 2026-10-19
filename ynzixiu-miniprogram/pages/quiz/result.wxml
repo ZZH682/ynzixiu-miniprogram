@@ -1,0 +1,31 @@
+<view class="score">
+  <view class="score-title">{{r.title}}</view>
+  <view class="score-num num">{{r.score}}<text class="score-unit">分</text></view>
+  <view class="score-verdict">{{verdict}}</view>
+  <view class="score-stats">
+    <view class="ss"><text class="ss-v num">{{r.correct}}/{{r.total}}</text><text class="ss-k">答对</text></view>
+    <view class="ss"><text class="ss-v num">{{r.usedText}}</text><text class="ss-k">用时</text></view>
+    <view class="ss"><text class="ss-v num">{{r.total - r.correct}}</text><text class="ss-k">进错题本</text></view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head"><text class="section-title">逐题回顾</text></view>
+  <view class="card item" wx:for="{{r.items}}" wx:key="id">
+    <view class="item-head">
+      <text class="item-no num">{{index + 1}}</text>
+      <text class="tag {{item.right ? 'tag-good' : 'tag-bad'}}">{{item.right ? '正确' : '错误'}}</text>
+    </view>
+    <view class="item-stem">{{item.stem}}</view>
+    <view wx:if="{{!item.right}}" class="item-detail">
+      <view>你的答案：{{item.chosen}}　正确答案：{{item.answer}}. {{item.answerText}}</view>
+      <view class="item-ana">{{item.analysis}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-space"></view>
+<view class="bottom-bar">
+  <view class="btn btn-line half" hover-class="btn-hover" bindtap="goErrors">错题本</view>
+  <view class="btn btn-primary half" hover-class="btn-hover" bindtap="again">再练一次</view>
+</view>

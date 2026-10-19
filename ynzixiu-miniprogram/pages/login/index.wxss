@@ -1,0 +1,20 @@
+page { background: var(--card); }
+.wrap { padding: 72rpx 48rpx; }
+.logo { width: 96rpx; height: 96rpx; border-radius: 24rpx; background: var(--ink); color: #fff; font-size: 30rpx; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.title { margin-top: 40rpx; font-size: 44rpx; font-weight: 700; }
+.sub { margin-top: 10rpx; font-size: 26rpx; color: var(--text-2); }
+
+.form { margin: 56rpx 0 40rpx; padding: 0 32rpx; background: var(--bg); }
+.code-field { display: flex; align-items: center; }
+.code-input { flex: 1; }
+.code-btn { font-size: 26rpx; color: var(--brand); font-weight: 600; padding-left: 24rpx; border-left: 1rpx solid var(--line); }
+.code-btn.off { color: var(--text-3); font-weight: 400; }
+
+.quick { margin-top: 20rpx; }
+
+.agree { display: flex; align-items: center; justify-content: center; margin-top: 40rpx; font-size: 23rpx; color: var(--text-2); }
+.box { width: 28rpx; height: 28rpx; border-radius: 50%; border: 3rpx solid #C9CFD9; margin-right: 10rpx; position: relative; }
+.box.on { border-color: var(--brand); background: var(--brand); }
+.box.on::after { content: ''; position: absolute; left: 8rpx; top: 3rpx; width: 7rpx; height: 13rpx; border-right: 3rpx solid #fff; border-bottom: 3rpx solid #fff; transform: rotate(45deg); }
+.link { color: var(--brand); }
+.hint { margin-top: 24rpx; text-align: center; font-size: 22rpx; color: var(--text-3); }

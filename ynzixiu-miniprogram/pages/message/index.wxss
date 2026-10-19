@@ -1,0 +1,33 @@
+.page { padding: 24rpx 0 20rpx; }
+
+.sub-card { margin: 0 32rpx 28rpx; }
+.sub-head { display: flex; align-items: center; justify-content: space-between; }
+.sub-title { font-size: 32rpx; font-weight: 700; }
+.switch {
+  width: 88rpx; height: 52rpx; border-radius: 999rpx;
+  background: #D9DEE8; position: relative; transition: background 0.2s;
+}
+.switch.on { background: var(--brand); }
+.switch-dot {
+  position: absolute; left: 6rpx; top: 6rpx;
+  width: 40rpx; height: 40rpx; border-radius: 50%; background: #fff;
+  transition: left 0.2s;
+}
+.switch.on .switch-dot { left: 42rpx; }
+.sub-tags { margin-top: 24rpx; }
+.sub-desc { margin-top: 16rpx; font-size: 24rpx; color: var(--text-3); line-height: 1.6; }
+
+.msg-list { padding-top: 8rpx; padding-bottom: 8rpx; }
+.msg { display: flex; align-items: flex-start; padding: 26rpx 0; border-bottom: 1rpx solid var(--line); }
+.msg:last-child { border-bottom: none; }
+.msg-icon {
+  width: 76rpx; height: 76rpx; border-radius: 22rpx; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30rpx; font-weight: 700;
+}
+.msg-main { flex: 1; min-width: 0; margin-left: 22rpx; }
+.msg-title-row { display: flex; align-items: center; }
+.msg-title { font-size: 29rpx; font-weight: 600; }
+.msg-dot { width: 14rpx; height: 14rpx; border-radius: 50%; background: var(--bad); margin-left: 12rpx; }
+.msg-summary { margin-top: 8rpx; font-size: 25rpx; color: var(--text-2); line-height: 1.5; }
+.msg-time { margin-top: 10rpx; font-size: 22rpx; color: var(--text-3); }

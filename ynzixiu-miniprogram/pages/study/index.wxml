@@ -1,0 +1,25 @@
+<block wx:if="{{list.length}}">
+  <view class="summary">
+    <text class="summary-num num">{{totalDone}}<text class="summary-all"> / {{totalAll}} 节</text></text>
+    <text class="summary-k">已学完的章节</text>
+  </view>
+  <view class="card item" wx:for="{{list}}" wx:key="id" hover-class="btn-hover" bindtap="goCourse" data-id="{{item.id}}">
+    <view class="item-top">
+      <view class="mark mark-sm" style="background:{{item.tint}};color:{{item.color}}">{{item.char}}</view>
+      <view class="item-main">
+        <view class="item-title ellipsis">{{item.title}}</view>
+        <view class="item-meta">{{item.typeText}} · {{item.teacher}}</view>
+      </view>
+    </view>
+    <view class="item-progress">
+      <view class="bar"><view class="bar-in {{item.finished ? 'full' : ''}}" style="width:{{item.percent}}%"></view></view>
+      <text class="item-pct num">{{item.finished ? '已学完' : item.done + ' / ' + item.all}}</text>
+    </view>
+  </view>
+</block>
+
+<view class="empty" wx:else>
+  <view class="empty-title">还没有报名课程</view>
+  <view>报名后的课程和学习进度会显示在这里</view>
+  <view class="empty-link" bindtap="goCourses">去选课 ›</view>
+</view>

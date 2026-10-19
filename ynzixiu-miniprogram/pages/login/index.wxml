@@ -1,0 +1,25 @@
+<view class="wrap">
+  <view class="logo">自修</view>
+  <view class="title">登录云南自修学校</view>
+  <view class="sub">一个手机号，课程、订单、学习记录各端通用</view>
+
+  <view class="card form">
+    <view class="field">
+      <input class="input" type="number" maxlength="11" placeholder="手机号" placeholder-class="placeholder" value="{{phone}}" bindinput="onPhone" />
+    </view>
+    <view class="field code-field">
+      <input class="input code-input" type="number" maxlength="6" placeholder="验证码" placeholder-class="placeholder" value="{{code}}" bindinput="onCode" />
+      <text class="code-btn {{wait ? 'off' : ''}}" bindtap="sendCode">{{wait ? wait + ' 秒后重发' : '获取验证码'}}</text>
+    </view>
+  </view>
+
+  <view class="btn btn-primary" hover-class="btn-hover" bindtap="submit">登录</view>
+  <view class="btn btn-ghost quick" hover-class="btn-hover" bindtap="quickLogin">微信手机号快捷登录</view>
+
+  <view class="agree" bindtap="toggleAgree">
+    <view class="box {{agreed ? 'on' : ''}}"></view>
+    <text>我已阅读并同意</text>
+    <text class="link" catchtap="showDoc">《用户协议》《隐私政策》</text>
+  </view>
+  <view class="hint">演示版：验证码固定为 123456</view>
+</view>

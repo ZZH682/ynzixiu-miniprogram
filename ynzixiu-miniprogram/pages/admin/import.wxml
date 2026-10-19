@@ -1,0 +1,42 @@
+<view class="intro card">
+  <view class="intro-title">内容批量录入</view>
+  <view class="intro-sub">题库、课程视频、资讯支持 Excel / CSV 模板批量导入，正式版由学校在管理后台维护，小程序端实时同步展示。</view>
+</view>
+
+<view class="chips tabs">
+  <view class="chip {{tab === 'quiz' ? 'on' : ''}}" data-t="quiz" bindtap="setTab">题库模板</view>
+  <view class="chip {{tab === 'course' ? 'on' : ''}}" data-t="course" bindtap="setTab">课程模板</view>
+  <view class="chip {{tab === 'news' ? 'on' : ''}}" data-t="news" bindtap="setTab">资讯模板</view>
+</view>
+
+<view class="card tpl" wx:if="{{tpl}}">
+  <view class="tpl-head">
+    <view>
+      <view class="tpl-name">{{tpl.name}}</view>
+      <view class="tpl-desc">{{tpl.desc}}</view>
+    </view>
+    <view class="btn btn-ghost tpl-copy" hover-class="btn-hover" bindtap="copyTpl">复制模板</view>
+  </view>
+
+  <view class="tpl-table">
+    <view class="tpl-row tpl-head-row">
+      <text class="tpl-cell" wx:for="{{tpl.header}}" wx:key="*this" wx:for-item="h">{{h}}</text>
+    </view>
+    <view class="tpl-row" wx:for="{{tpl.rows}}" wx:for-index="ri" wx:key="ri" hover-class="btn-hover" bindtap="copyRow" data-i="{{index}}">
+      <text class="tpl-cell" wx:for="{{row}}" wx:for-item="cell" wx:key="*this">{{cell}}</text>
+    </view>
+  </view>
+  <view class="tpl-note">点击示例行可复制该行数据；正式版上传文件后由后台校验并导入。</view>
+</view>
+
+<view class="card flow">
+  <view class="flow-title">导入流程（正式版）</view>
+  <view class="flow-step"><text class="flow-no num">1</text>下载模板，按字段填写内容</view>
+  <view class="flow-step"><text class="flow-no num">2</text>在管理后台批量上传 CSV / Excel 文件</view>
+  <view class="flow-step"><text class="flow-no num">3</text>系统校验字段与格式，错误行提示修改</view>
+  <view class="flow-step"><text class="flow-no num">4</text>分批导入完成，小程序端即时更新</view>
+</view>
+
+<view class="btn btn-primary demo-btn" hover-class="btn-hover" bindtap="demoImport">模拟导入（演示）</view>
+
+<view class="demo-note">演示版本 · 导入为前端演示，正式版由学校在后台操作</view>

@@ -1,0 +1,27 @@
+<block wx:if="{{list.length}}">
+  <view class="head">
+    <text class="head-title">{{list.length}} 道错题</text>
+    <text class="head-sub">重练时答对会自动移出</text>
+  </view>
+  <view class="card item" wx:for="{{list}}" wx:key="id">
+    <view class="item-top">
+      <text class="tag">{{item.sname}}</text>
+      <text class="item-remove" bindtap="remove" data-id="{{item.id}}">移出</text>
+    </view>
+    <view class="item-stem">{{item.stem}}</view>
+    <view class="item-detail">
+      <view>你的答案：<text class="bad">{{item.chosen}}</text>　正确答案：<text class="good">{{item.answer}}. {{item.answerText}}</text></view>
+      <view class="item-ana">{{item.analysis}}</view>
+    </view>
+  </view>
+  <view class="bottom-space"></view>
+  <view class="bottom-bar">
+    <view class="btn btn-primary full" hover-class="btn-hover" bindtap="redo">重练全部错题</view>
+  </view>
+</block>
+
+<view class="empty" wx:else>
+  <view class="empty-title">错题本是空的</view>
+  <view>练习中答错的题会自动收进来</view>
+  <view class="empty-link" bindtap="goQuiz">去刷题 ›</view>
+</view>

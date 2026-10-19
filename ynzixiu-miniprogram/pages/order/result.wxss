@@ -1,0 +1,29 @@
+.done { display: flex; flex-direction: column; align-items: center; padding: 56rpx 48rpx 40rpx; }
+.check { width: 112rpx; height: 112rpx; border-radius: 50%; background: var(--good); display: flex; align-items: center; justify-content: center; }
+.check-mark { width: 44rpx; height: 24rpx; border-left: 8rpx solid #fff; border-bottom: 8rpx solid #fff; transform: rotate(-45deg); margin-top: -10rpx; }
+.done-title { margin-top: 24rpx; font-size: 40rpx; font-weight: 700; }
+.done-sub { margin-top: 8rpx; font-size: 25rpx; color: var(--text-2); text-align: center; }
+
+page { padding-top: 24rpx; }
+.receipt { position: relative; overflow: hidden; margin: 0 32rpx; background: var(--card); border-radius: 24rpx; padding: 36rpx 36rpx 28rpx; }
+.receipt-head { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 20rpx; margin-bottom: 8rpx; border-bottom: 1rpx solid var(--line); }
+.receipt-title { font-size: 30rpx; font-weight: 700; letter-spacing: 4rpx; }
+.receipt-no { font-size: 22rpx; color: var(--text-3); }
+.r-row { display: flex; padding: 12rpx 0; font-size: 26rpx; }
+.r-k { width: 150rpx; color: var(--text-3); flex-shrink: 0; }
+.r-v { flex: 1; text-align: right; }
+.r-cut { margin: 16rpx 0; border-top: 2rpx dashed var(--line); }
+.total .r-v { font-weight: 600; }
+.stamp {
+  position: absolute; left: 230rpx; bottom: 40rpx;
+  width: 120rpx; height: 120rpx; border-radius: 50%;
+  border: 4rpx solid rgba(229, 82, 42, 0.35); color: rgba(229, 82, 42, 0.45);
+  font-size: 26rpx; font-weight: 700; letter-spacing: 4rpx;
+  display: flex; align-items: center; justify-content: center;
+  transform: rotate(-18deg);
+}
+
+.actions { margin: 40rpx 32rpx 60rpx; }
+.action-row { display: flex; margin-top: 20rpx; }
+.half { flex: 1; }
+.half + .half { margin-left: 20rpx; }

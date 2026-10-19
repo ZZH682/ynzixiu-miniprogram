@@ -1,0 +1,7 @@
+.course-row { display: flex; padding: 24rpx 0; border-bottom: 1rpx solid var(--line); }
+.course-row:last-child { border-bottom: none; }
+.course-row-main { flex: 1; min-width: 0; margin-left: 24rpx; display: flex; flex-direction: column; }
+.course-row-title { font-size: 29rpx; font-weight: 600; line-height: 1.4; }
+.course-row-meta { font-size: 23rpx; color: var(--text-3); margin-top: 8rpx; }
+.course-row-foot { margin-top: auto; display: flex; align-items: baseline; font-size: 32rpx; }
+.course-row-foot .owned { margin-left: auto; margin-right: 0; }

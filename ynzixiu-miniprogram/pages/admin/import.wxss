@@ -1,0 +1,47 @@
+.intro { margin: 24rpx 32rpx 20rpx; }
+.intro-title { font-size: 34rpx; font-weight: 700; }
+.intro-sub { margin-top: 14rpx; font-size: 25rpx; color: var(--text-2); line-height: 1.7; }
+
+.tabs { margin-bottom: 20rpx; }
+
+.tpl { margin: 0 32rpx 20rpx; }
+.tpl-head { display: flex; align-items: flex-start; justify-content: space-between; }
+.tpl-name { font-size: 32rpx; font-weight: 700; }
+.tpl-desc { margin-top: 10rpx; font-size: 24rpx; color: var(--text-3); line-height: 1.6; }
+.tpl-copy { flex-shrink: 0; margin-left: 20rpx; height: 64rpx; line-height: 64rpx; font-size: 24rpx; padding: 0 24rpx; }
+
+.tpl-table {
+  margin-top: 24rpx;
+  border: 1rpx solid var(--line);
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.tpl-row { display: flex; border-bottom: 1rpx solid var(--line); }
+.tpl-row:last-child { border-bottom: none; }
+.tpl-head-row { background: var(--bg); }
+.tpl-cell {
+  flex: 1;
+  min-width: 0;
+  padding: 16rpx 12rpx;
+  font-size: 21rpx;
+  color: var(--text-2);
+  border-right: 1rpx solid var(--line);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tpl-cell:last-child { border-right: none; }
+.tpl-head-row .tpl-cell { color: var(--ink); font-weight: 600; }
+.tpl-note { margin-top: 16rpx; font-size: 22rpx; color: var(--text-3); line-height: 1.6; }
+
+.flow { margin: 0 32rpx 20rpx; }
+.flow-title { font-size: 30rpx; font-weight: 600; margin-bottom: 20rpx; }
+.flow-step { display: flex; align-items: center; font-size: 26rpx; color: var(--text-2); margin-bottom: 18rpx; }
+.flow-step:last-child { margin-bottom: 0; }
+.flow-no {
+  width: 40rpx; height: 40rpx; line-height: 40rpx; text-align: center;
+  border-radius: 50%; background: var(--brand-weak); color: var(--brand);
+  font-size: 22rpx; font-weight: 700; margin-right: 18rpx; flex-shrink: 0;
+}
+
+.demo-btn { margin: 0 32rpx; }

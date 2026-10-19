@@ -1,0 +1,32 @@
+<view class="done" wx:if="{{fromPay}}">
+  <view class="check"><view class="check-mark"></view></view>
+  <view class="done-title">报名成功</view>
+  <view class="done-sub">{{o.status === 'balance' ? '已付首付，开课前在“我的订单”付尾款' : '课程已解锁，现在就可以开始学习'}}</view>
+</view>
+
+<view class="receipt">
+  <view class="receipt-head">
+    <text class="receipt-title">电子收据</text>
+    <text class="receipt-no num">No. {{o.receiptNo}}</text>
+  </view>
+  <view class="r-row"><text class="r-k">收款单位</text><text class="r-v">云南自修学校</text></view>
+  <view class="r-row"><text class="r-k">学员手机</text><text class="r-v num">{{o.phoneText}}</text></view>
+  <view class="r-row"><text class="r-k">报名项目</text><text class="r-v">{{o.title}}</text></view>
+  <view class="r-row"><text class="r-k">业务板块</text><text class="r-v">{{o.bname}}</text></view>
+  <view class="r-row"><text class="r-k">付款方式</text><text class="r-v">{{o.planText}} · {{o.payText}}</text></view>
+  <view class="r-row"><text class="r-k">支付时间</text><text class="r-v num">{{o.timeText}}</text></view>
+  <view class="r-row"><text class="r-k">订单编号</text><text class="r-v num">{{o.id}}</text></view>
+  <view class="r-cut"></view>
+  <view class="r-row total"><text class="r-k">课程总价</text><text class="r-v num">¥{{o.amountText}}</text></view>
+  <view class="r-row total"><text class="r-k">本次实付</text><text class="r-v price num">¥{{o.paidText}}</text></view>
+  <view class="r-row total" wx:if="{{o.status === 'balance'}}"><text class="r-k">待付尾款</text><text class="r-v num">¥{{o.balanceText}}</text></view>
+  <view class="stamp">演示</view>
+</view>
+
+<view class="actions">
+  <view class="btn btn-primary" hover-class="btn-hover" bindtap="goStudy">去学习</view>
+  <view class="action-row">
+    <view class="btn btn-line half" hover-class="btn-hover" bindtap="saveReceipt">下载收据</view>
+    <view class="btn btn-line half" hover-class="btn-hover" bindtap="goOrders">我的订单</view>
+  </view>
+</view>

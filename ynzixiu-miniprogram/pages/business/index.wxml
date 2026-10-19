@@ -1,0 +1,30 @@
+<view class="intro">
+  <text class="intro-title">不确定走哪条路？</text>
+  <text class="intro-sub">先看看每个方向适合谁，再约老师一对一聊。</text>
+</view>
+
+<view class="list">
+  <view class="item" wx:for="{{list}}" wx:key="id" hover-class="btn-hover" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="item-head">
+      <view class="mark" style="background:{{item.tint}};color:{{item.color}}">{{item.char}}</view>
+      <view class="item-main">
+        <view class="item-name">{{item.name}}</view>
+        <view class="item-summary">{{item.summary}}</view>
+      </view>
+      <text class="row-arrow">›</text>
+    </view>
+    <view class="item-foot">
+      <text class="tag" wx:for="{{item.tags}}" wx:for-item="t" wx:key="*this">{{t}}</text>
+      <text class="item-count">{{item.courseCount}} 门课程</text>
+    </view>
+  </view>
+</view>
+
+<view class="help card">
+  <view class="help-text">
+    <view class="help-title">免费学历与升学规划</view>
+    <view class="help-sub">留下联系方式，老师 1 个工作日内回电</view>
+  </view>
+  <view class="btn btn-primary help-btn" hover-class="btn-hover" bindtap="goSignup">预约</view>
+</view>
+<view class="demo-note">演示版本 · 内容为示例</view>

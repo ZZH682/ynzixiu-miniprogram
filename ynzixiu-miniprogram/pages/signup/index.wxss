@@ -1,0 +1,56 @@
+.intro { padding: 40rpx 32rpx 32rpx; }
+.intro-title { font-size: 40rpx; font-weight: 700; }
+.intro-sub { margin-top: 8rpx; font-size: 25rpx; color: var(--text-2); line-height: 1.6; }
+
+.block { margin: 0 32rpx 20rpx; padding-top: 4rpx; padding-bottom: 4rpx; }
+
+.biz-grid { display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: -16rpx; }
+.biz {
+  width: calc(50% - 8rpx);
+  display: flex;
+  align-items: center;
+  padding: 20rpx 20rpx;
+  margin-bottom: 16rpx;
+  border-radius: 16rpx;
+  border: 2rpx solid var(--line);
+  font-size: 26rpx;
+  color: var(--text-2);
+}
+.biz.on { border-color: var(--brand); background: var(--brand-weak); color: var(--brand); font-weight: 600; }
+.biz-dot { width: 12rpx; height: 12rpx; border-radius: 50%; margin-right: 14rpx; flex-shrink: 0; }
+.biz-name { flex: 1; min-width: 0; }
+
+.picks { display: flex; flex-wrap: wrap; }
+.pick {
+  padding: 12rpx 28rpx;
+  margin: 0 16rpx 16rpx 0;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  color: var(--text-2);
+  background: var(--bg);
+  border: 2rpx solid var(--bg);
+}
+.pick.on { color: var(--brand); background: var(--brand-weak); border-color: var(--brand); font-weight: 600; }
+
+.textarea { width: 100%; height: 160rpx; font-size: 28rpx; line-height: 1.6; color: var(--ink); }
+
+.note { text-align: center; font-size: 22rpx; color: var(--text-3); padding: 12rpx 0 24rpx; }
+.submit { flex: 1; }
+
+.success { padding: 120rpx 48rpx 48rpx; display: flex; flex-direction: column; align-items: center; }
+.check { width: 144rpx; height: 144rpx; border-radius: 50%; background: var(--good-weak); position: relative; }
+.check::after {
+  content: '';
+  position: absolute;
+  left: 50rpx;
+  top: 34rpx;
+  width: 32rpx;
+  height: 60rpx;
+  border-right: 8rpx solid var(--good);
+  border-bottom: 8rpx solid var(--good);
+  transform: rotate(45deg);
+}
+.success-title { margin-top: 40rpx; font-size: 40rpx; font-weight: 700; }
+.success-sub { margin-top: 12rpx; font-size: 27rpx; color: var(--text-2); }
+.success-btn { width: 100%; margin-top: 24rpx; }
+.success-btn.first { margin-top: 72rpx; }

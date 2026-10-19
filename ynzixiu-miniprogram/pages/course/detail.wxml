@@ -1,0 +1,71 @@
+<!-- 播放区 / 封面 -->
+<view wx:if="{{playing > -1}}" class="player">
+  <view class="player-play"><view class="tri"></view></view>
+  <view class="player-title">{{playingTitle}}</view>
+  <view class="player-note">演示视频位 · 正式版接入云点播播放</view>
+  <view class="player-bar"><view class="player-bar-in"></view></view>
+</view>
+<view wx:else class="hero" style="background:{{c.tint}};color:{{c.color}}">
+  <text class="hero-char">{{c.char}}</text>
+  <text class="hero-type">{{c.typeText}} · {{c.bname}}</text>
+  <text class="hero-name">{{c.short}}</text>
+</view>
+
+<view class="info">
+  <view class="title">{{c.title}}</view>
+  <view class="sub">{{c.intro}}</view>
+  <view class="price-row">
+    <text class="price big"><text class="price-unit">¥</text>{{c.priceText}}</text>
+    <text class="price-orig">¥{{c.origText}}</text>
+    <text class="sales">{{c.sales}} 人已报名</text>
+  </view>
+  <view wx:if="{{owned}}" class="progress">
+    <view class="progress-text">已学 {{done}} / {{chapters.length}} 节</view>
+    <view class="progress-bar"><view class="progress-in" style="width:{{percent}}%"></view></view>
+  </view>
+</view>
+
+<view class="teacher card">
+  <view class="teacher-avatar" style="background:{{c.tint}};color:{{c.color}}">{{c.teacherInitial}}</view>
+  <view>
+    <view class="teacher-name">{{c.teacher}}</view>
+    <view class="teacher-note">{{c.teacherNote}}</view>
+  </view>
+</view>
+
+<view class="tabs">
+  <view class="tab {{tab === 'intro' ? 'on' : ''}}" data-t="intro" bindtap="setTab">课程介绍</view>
+  <view class="tab {{tab === 'catalog' ? 'on' : ''}}" data-t="catalog" bindtap="setTab">目录 · {{chapters.length}} 节</view>
+</view>
+
+<view wx:if="{{tab === 'intro'}}" class="card panel">
+  <view class="hl" wx:for="{{c.highlights}}" wx:key="*this">
+    <text class="hl-no num">{{index + 1}}</text>
+    <text>{{item}}</text>
+  </view>
+  <view class="panel-note">报名后可在“我的 · 学习中心”查看进度，订单与电子收据在“我的订单”。</view>
+</view>
+
+<view wx:else class="card panel">
+  <view class="chapter {{playing === index ? 'now' : ''}}" wx:for="{{chapters}}" wx:key="no" hover-class="btn-hover" bindtap="play" data-i="{{index}}">
+    <text class="chapter-no num">{{item.noText}}</text>
+    <view class="chapter-main">
+      <view class="chapter-title ellipsis">{{item.title}}</view>
+      <view class="chapter-dur num">{{item.dur}}</view>
+    </view>
+    <text wx:if="{{item.learned}}" class="tag tag-good">已学</text>
+    <text wx:elif="{{owned}}" class="tag tag-brand">学习</text>
+    <text wx:elif="{{item.trial}}" class="tag tag-warm">试听</text>
+    <text wx:else class="chapter-lock">报名后解锁</text>
+  </view>
+</view>
+
+<view class="bottom-space"></view>
+<view class="bottom-bar">
+  <view class="bar-icon" hover-class="btn-hover" bindtap="callPhone">
+    <view class="bar-icon-dot"></view>
+    <text>咨询</text>
+  </view>
+  <view wx:if="{{owned}}" class="btn btn-primary bar-main" hover-class="btn-hover" bindtap="continueStudy">{{done ? '继续学习' : '开始学习'}}</view>
+  <view wx:else class="btn btn-primary bar-main" hover-class="btn-hover" bindtap="buy">立即报名 · ¥{{c.priceText}}</view>
+</view>

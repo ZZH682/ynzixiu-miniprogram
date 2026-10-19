@@ -1,0 +1,32 @@
+page { padding-top: 24rpx; }
+.block { margin: 0 32rpx 20rpx; }
+.course { display: flex; align-items: center; }
+.cover-sm { width: 112rpx; height: 112rpx; border-radius: 20rpx; display: flex; align-items: center; justify-content: center; font-size: 48rpx; font-weight: 800; flex-shrink: 0; }
+.course-main { margin-left: 24rpx; flex: 1; min-width: 0; }
+.course-title { font-size: 30rpx; font-weight: 600; line-height: 1.4; }
+.course-meta { margin-top: 6rpx; font-size: 23rpx; color: var(--text-3); }
+
+.label { font-size: 24rpx; color: var(--text-3); margin-bottom: 8rpx; }
+.value { font-size: 30rpx; font-weight: 600; }
+
+.opt { display: flex; align-items: center; padding: 22rpx 0; }
+.opt + .opt { border-top: 1rpx solid var(--line); }
+.radio { width: 36rpx; height: 36rpx; border-radius: 50%; border: 3rpx solid #C9CFD9; margin-right: 22rpx; flex-shrink: 0; position: relative; }
+.opt.on .radio { border-color: var(--brand); }
+.opt.on .radio::after { content: ''; position: absolute; width: 18rpx; height: 18rpx; border-radius: 50%; background: var(--brand); left: 6rpx; top: 6rpx; }
+.opt-main { flex: 1; }
+.opt-title { font-size: 29rpx; }
+.opt.on .opt-title { font-weight: 600; }
+.opt-sub { font-size: 23rpx; color: var(--text-3); margin-top: 2rpx; }
+
+.coupon-row { display: flex; align-items: center; padding: 14rpx 0; }
+.coupon-main { flex: 1; min-width: 0; }
+.coupon-text { font-size: 29rpx; font-weight: 600; color: var(--price); }
+.coupon-sub { font-size: 22rpx; color: var(--text-3); margin-top: 6rpx; }
+
+.note { margin: 8rpx 48rpx; font-size: 22rpx; color: var(--text-3); line-height: 1.6; }
+
+.total { flex: 1; display: flex; align-items: baseline; }
+.total-label { font-size: 25rpx; color: var(--text-2); margin-right: 8rpx; }
+.total-num { font-size: 44rpx; }
+.pay-btn { width: 260rpx; }

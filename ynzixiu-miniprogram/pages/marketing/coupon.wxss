@@ -1,0 +1,43 @@
+.tabs { margin: 24rpx 0 20rpx; }
+
+.ticket {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.ticket-left {
+  width: 200rpx; flex-shrink: 0;
+  color: #fff;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 28rpx 12rpx;
+  position: relative;
+}
+.ticket-left::after {
+  content: '';
+  position: absolute; right: -12rpx; top: 0; bottom: 0;
+  border-left: 24rpx dashed rgba(255, 255, 255, 0.5);
+}
+.ticket-amount { font-size: 46rpx; font-weight: 800; line-height: 1.1; }
+.ticket-unit { font-size: 0.5em; margin-right: 2rpx; }
+.ticket-min { margin-top: 10rpx; font-size: 21rpx; opacity: 0.85; }
+
+.ticket-main { flex: 1; min-width: 0; padding: 28rpx 20rpx 28rpx 32rpx; }
+.ticket-name { font-size: 30rpx; font-weight: 600; }
+.ticket-desc { margin-top: 8rpx; font-size: 24rpx; color: var(--text-2); line-height: 1.5; }
+.ticket-expire { margin-top: 8rpx; font-size: 22rpx; color: var(--text-3); }
+
+.ticket-btn {
+  align-self: center;
+  flex-shrink: 0;
+  margin-right: 28rpx;
+  padding: 12rpx 30rpx;
+  border-radius: 999rpx;
+  background: var(--brand);
+  color: #fff;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+.ticket-btn.got { background: #C3C9D3; }

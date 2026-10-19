@@ -1,0 +1,49 @@
+<view class="hero">
+  <text class="hero-title">邀请好友一起学</text>
+  <text class="hero-sub">转介绍返佣 · 拼团 · 领券 · 分享海报，报名更省钱</text>
+</view>
+
+<view class="card menu">
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/marketing/distribute">
+    <view class="menu-icon" style="background:#EAF0FF;color:#2350D8">分</view>
+    <view class="row-main">
+      <view class="menu-name">转介绍分销</view>
+      <view class="menu-desc">分享给好友，好友报名返 10% 佣金，可提现</view>
+    </view>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/marketing/groupon">
+    <view class="menu-icon" style="background:#EEECFC;color:#4B3FC9">团</view>
+    <view class="row-main">
+      <view class="menu-name">拼团</view>
+      <view class="menu-desc">2–3 人成团享团购价，最多省 ¥980</view>
+    </view>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/marketing/coupon">
+    <view class="menu-icon" style="background:#FDF1E4;color:#B4570F">券</view>
+    <view class="row-main">
+      <view class="menu-name">优惠券</view>
+      <view class="menu-desc">{{couponCount ? '已领取 ' + couponCount + ' 张' : '领券中心，最高减 ¥500'}}</view>
+    </view>
+    <text class="row-arrow">›</text>
+  </view>
+  <view class="row" hover-class="btn-hover" bindtap="go" data-url="/pages/marketing/poster">
+    <view class="menu-icon" style="background:#FBECE8;color:#B8432F">享</view>
+    <view class="row-main">
+      <view class="menu-name">分享海报</view>
+      <view class="menu-desc">一键生成课程推广海报，转发到朋友圈 / 群</view>
+    </view>
+    <text class="row-arrow">›</text>
+  </view>
+</view>
+
+<view class="card tip">
+  <view class="tip-title">活动说明</view>
+  <view class="tip-text">· 转介绍佣金：好友通过你的分享报名课程后，返课程实付金额的 10%。</view>
+  <view class="tip-text">· 拼团：开团后分享给好友参团，成团即享团购价，未成团自动退款。</view>
+  <view class="tip-text">· 优惠券：领取后报名课程时自动抵扣，可与其他活动同享。</view>
+  <view class="tip-text">· 以上为演示数据，正式版以学校活动规则为准。</view>
+</view>
+
+<view class="demo-note">演示版本 · 营销活动为示例</view>

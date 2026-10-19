@@ -1,0 +1,44 @@
+<view class="hero" style="background:{{l.tint}};color:{{l.color}}">
+  <view class="hero-status">
+    <view wx:if="{{l.status === 'live'}}" class="live-dot"></view>
+    <text>{{l.statusText}}</text>
+  </view>
+  <text class="hero-char">{{l.cover}}</text>
+  <text class="hero-title">{{l.title}}</text>
+  <text class="hero-sub">{{l.teacher}} · {{l.teacherNote}}</text>
+  <text class="hero-sub">{{l.viewersText}}</text>
+</view>
+
+<view class="card panel">
+  <view class="panel-title">直播介绍</view>
+  <view class="panel-text">{{l.intro}}</view>
+  <view class="hl" wx:for="{{l.highlights}}" wx:key="*this">
+    <text class="hl-no num">{{index + 1}}</text>
+    <text>{{item}}</text>
+  </view>
+</view>
+
+<view class="card panel">
+  <view class="panel-title">开播提醒</view>
+  <view class="panel-text">正式版接入「小程序订阅消息」：预约后开播前 5 分钟自动提醒，并支持公众号模板消息、短信通知学员。</view>
+  <view class="row remind-row" hover-class="btn-hover" bindtap="remind">
+    <view class="row-main">
+      <view class="remind-title">{{reminded ? '已开启开播提醒' : '预约开播提醒'}}</view>
+      <view class="remind-sub">开播前通过订阅消息通知你</view>
+    </view>
+    <view class="switch {{reminded ? 'on' : ''}}">
+      <view class="switch-dot"></view>
+    </view>
+  </view>
+</view>
+
+<view class="demo-note">演示版本 · 正式版接入微信直播 / 云点播播放</view>
+
+<view class="bottom-space"></view>
+<view class="bottom-bar">
+  <view class="bar-icon" hover-class="btn-hover" bindtap="callPhone">
+    <view class="bar-icon-dot"></view>
+    <text>咨询</text>
+  </view>
+  <view class="btn btn-primary bar-main {{reminded && l.status === 'upcoming' ? 'btn-ghost' : ''}}" hover-class="btn-hover" bindtap="mainAction">{{btnText}}</view>
+</view>

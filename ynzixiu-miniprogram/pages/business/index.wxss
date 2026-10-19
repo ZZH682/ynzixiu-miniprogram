@@ -1,0 +1,18 @@
+.intro { padding: 40rpx 32rpx 32rpx; }
+.intro-title { display: block; font-size: 40rpx; font-weight: 700; }
+.intro-sub { display: block; margin-top: 10rpx; font-size: 26rpx; color: var(--text-2); }
+
+.list { padding: 0 32rpx; }
+.item { background: var(--card); border-radius: 24rpx; padding: 32rpx; margin-bottom: 20rpx; }
+.item-head { display: flex; align-items: center; }
+.item-main { flex: 1; min-width: 0; margin-left: 24rpx; }
+.item-name { font-size: 32rpx; font-weight: 600; }
+.item-summary { margin-top: 6rpx; font-size: 25rpx; color: var(--text-2); }
+.item-foot { display: flex; align-items: center; flex-wrap: wrap; margin-top: 24rpx; padding-top: 20rpx; border-top: 1rpx solid var(--line); }
+.item-count { margin-left: auto; font-size: 22rpx; color: var(--text-3); }
+
+.help { margin: 28rpx 32rpx 0; display: flex; align-items: center; background: var(--brand-weak); }
+.help-text { flex: 1; }
+.help-title { font-size: 30rpx; font-weight: 600; color: var(--brand-deep); }
+.help-sub { margin-top: 6rpx; font-size: 23rpx; color: var(--text-2); }
+.help-btn { width: 160rpx; height: 72rpx; line-height: 72rpx; font-size: 28rpx; }

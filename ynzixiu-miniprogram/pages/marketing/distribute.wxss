@@ -1,0 +1,35 @@
+.hero {
+  margin: 24rpx 32rpx 20rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(135deg, #2350D8, #4B3FC9);
+  color: #fff;
+  padding: 40rpx 36rpx;
+}
+.hero-label { font-size: 24rpx; opacity: 0.75; }
+.hero-num { margin-top: 10rpx; font-size: 64rpx; font-weight: 800; line-height: 1.1; }
+.hero-extra { display: flex; margin-top: 28rpx; }
+.hero-item { flex: 1; display: flex; flex-direction: column; }
+.hero-k { font-size: 22rpx; opacity: 0.7; }
+.hero-v { margin-top: 6rpx; font-size: 28rpx; font-weight: 600; }
+.hero-btn {
+  margin-top: 32rpx; background: #fff; color: var(--brand);
+  font-size: 28rpx; font-weight: 700;
+}
+
+.code-card { margin: 0 32rpx 20rpx; }
+.code-head { display: flex; align-items: center; justify-content: space-between; }
+.code-title { font-size: 30rpx; font-weight: 600; }
+.code-sub { margin-top: 8rpx; font-size: 23rpx; color: var(--text-3); line-height: 1.5; }
+.code-value { font-size: 40rpx; font-weight: 800; color: var(--brand); letter-spacing: 2rpx; }
+.code-btn { margin-top: 26rpx; height: 76rpx; line-height: 76rpx; font-size: 28rpx; }
+.code-note { margin-top: 18rpx; font-size: 23rpx; color: var(--text-3); line-height: 1.6; }
+
+.team-list { padding-top: 8rpx; padding-bottom: 8rpx; }
+.team { display: flex; align-items: center; padding: 24rpx 0; border-bottom: 1rpx solid var(--line); }
+.team:last-child { border-bottom: none; }
+.team-main { flex: 1; min-width: 0; }
+.team-name { font-size: 29rpx; font-weight: 600; }
+.team-meta { margin-top: 8rpx; font-size: 23rpx; color: var(--text-3); }
+.team-side { display: flex; align-items: center; }
+.team-side .tag { margin-right: 12rpx; }
+.team-earn { font-size: 28rpx; font-weight: 700; color: var(--good); }

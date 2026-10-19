@@ -1,0 +1,24 @@
+<!-- 课程封面：业务色 + 字标，不依赖图片素材 -->
+<template name="cover">
+  <view class="cover" style="width:{{w}}rpx;height:{{h}}rpx;background:{{c.tint}};color:{{c.color}}">
+    <text class="cover-char">{{c.char}}</text>
+    <text class="cover-type">{{c.typeText}}</text>
+    <text class="cover-name">{{c.short}}</text>
+  </view>
+</template>
+
+<!-- 课程列表行 -->
+<template name="course-row">
+  <view class="course-row" hover-class="btn-hover" bindtap="goCourse" data-id="{{c.id}}">
+    <template is="cover" data="{{c: c, w: 208, h: 156}}" />
+    <view class="course-row-main">
+      <view class="course-row-title clamp2">{{c.title}}</view>
+      <view class="course-row-meta">{{c.teacher}} · {{c.sales}} 人已报名</view>
+      <view class="course-row-foot">
+        <text class="price"><text class="price-unit">¥</text>{{c.priceText}}</text>
+        <text class="price-orig">¥{{c.origText}}</text>
+        <text wx:if="{{c.owned}}" class="tag tag-good owned">已购买</text>
+      </view>
+    </view>
+  </view>
+</template>

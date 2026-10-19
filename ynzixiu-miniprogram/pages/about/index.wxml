@@ -1,0 +1,49 @@
+<view class="head">
+  <view class="head-name">云南自修学校</view>
+  <view class="head-sub">成人学历提升 · 职业发展培训</view>
+</view>
+
+<view class="section">
+  <view class="card">
+    <view class="intro">{{intro}}</view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head"><text class="section-title">六大业务</text></view>
+  <view class="card list-card">
+    <view class="row" wx:for="{{businesses}}" wx:key="id" hover-class="btn-hover" bindtap="goBiz" data-id="{{item.id}}">
+      <view class="mark mark-sm" style="background:{{item.tint}};color:{{item.color}}">{{item.char}}</view>
+      <view class="row-main biz-main">
+        <view class="biz-name">{{item.name}}</view>
+        <view class="biz-summary ellipsis">{{item.summary}}</view>
+      </view>
+      <text class="row-arrow">›</text>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head"><text class="section-title">办学资质</text></view>
+  <view class="certs">
+    <view class="cert" wx:for="{{certs}}" wx:key="*this">
+      <view class="cert-box">待学校提供</view>
+      <view class="cert-name">{{item}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head"><text class="section-title">联系方式</text></view>
+  <view class="card list-card">
+    <view class="row" hover-class="btn-hover" bindtap="callPhone">
+      <view class="row-main">
+        <view class="contact-label">咨询热线</view>
+        <view class="contact-value num">{{phone}}</view>
+      </view>
+      <text class="call">拨打</text>
+    </view>
+  </view>
+</view>
+
+<view class="demo-note">本小程序为演示版本，页面内容均为示例</view>

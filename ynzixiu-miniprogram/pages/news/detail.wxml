@@ -1,0 +1,33 @@
+<import src="/templates/course.wxml" />
+
+<view class="article">
+  <view class="title">{{n.title}}</view>
+  <view class="meta">
+    <text class="tag tag-brand">{{n.category}}</text>
+    <text class="num">{{n.date}}</text>
+    <text class="dot">·</text>
+    <text class="num">{{n.views}} 阅读</text>
+  </view>
+  <view class="body">
+    <view class="para" wx:for="{{n.content}}" wx:key="index">{{item}}</view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="card cta">
+    <view class="cta-title">对政策有疑问？</view>
+    <view class="cta-sub">预约老师一对一解读，结合你的情况讲清楚</view>
+    <view class="btn btn-primary cta-btn" hover-class="btn-hover" bindtap="goSignup">预约一对一解读</view>
+  </view>
+</view>
+
+<view class="section" wx:if="{{courses.length}}">
+  <view class="section-head"><text class="section-title">相关课程</text></view>
+  <view class="card list-card">
+    <block wx:for="{{courses}}" wx:key="id">
+      <template is="course-row" data="{{c: item}}" />
+    </block>
+  </view>
+</view>
+
+<view class="demo-note">本文为示例内容，具体以官方公告为准</view>

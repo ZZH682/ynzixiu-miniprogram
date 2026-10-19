@@ -1,0 +1,22 @@
+<view class="sticky">
+  <scroll-view class="chips" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="chip {{cat === item ? 'on' : ''}}" wx:for="{{cats}}" wx:key="*this" bindtap="onCat" data-cat="{{item}}">{{item}}</view>
+  </scroll-view>
+</view>
+
+<view class="card list" wx:if="{{list.length}}">
+  <view class="news-row" wx:for="{{list}}" wx:key="id" hover-class="btn-hover" bindtap="goNews" data-id="{{item.id}}">
+    <view class="news-title clamp2">{{item.title}}</view>
+    <view class="news-meta">
+      <text class="tag tag-brand">{{item.category}}</text>
+      <text class="num">{{item.date}}</text>
+      <text class="news-views num">{{item.views}} 阅读</text>
+    </view>
+  </view>
+</view>
+<view class="empty" wx:else>
+  <view class="empty-title">暂无相关资讯</view>
+  <view>换个分类看看</view>
+</view>
+
+<view class="demo-note">资讯均为示例，正式版由学校按官方公告录入</view>

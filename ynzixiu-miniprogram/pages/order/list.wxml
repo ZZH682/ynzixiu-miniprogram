@@ -1,0 +1,24 @@
+<view class="list" wx:if="{{list.length}}">
+  <view class="card item" wx:for="{{list}}" wx:key="id">
+    <view class="item-top">
+      <text class="item-no num">{{item.id}}</text>
+      <text class="tag {{item.status === 'paid' ? 'tag-good' : 'tag-warm'}}">{{item.status === 'paid' ? '已付清' : '待付尾款'}}</text>
+    </view>
+    <view class="item-title">{{item.title}}</view>
+    <view class="item-meta">{{item.bname}} · {{item.timeText}}</view>
+    <view class="item-foot">
+      <view class="item-amount">
+        <text class="item-k">实付</text>
+        <text class="price">¥{{item.paidText}}</text>
+        <text wx:if="{{item.couponText}}" class="item-k gap">{{item.couponText}}</text>
+        <text wx:if="{{item.status !== 'paid'}}" class="item-k gap">尾款 ¥{{item.balanceText}}</text>
+      </view>
+      <view class="mini-btn" bindtap="goReceipt" data-id="{{item.id}}">收据</view>
+      <view wx:if="{{item.status !== 'paid'}}" class="mini-btn primary" bindtap="payBalance" data-id="{{item.id}}">付尾款</view>
+    </view>
+  </view>
+</view>
+<view class="empty" wx:else>
+  <view class="empty-title">还没有订单</view>
+  <view class="empty-link" bindtap="goCourses">去看看课程 ›</view>
+</view>

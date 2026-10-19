@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/business/index",
+    "pages/quiz/index",
+    "pages/mine/index",
+    "pages/business/detail",
+    "pages/course/list",
+    "pages/course/detail",
+    "pages/order/confirm",
+    "pages/order/result",
+    "pages/order/list",
+    "pages/quiz/exam",
+    "pages/quiz/result",
+    "pages/quiz/errors",
+    "pages/news/index",
+    "pages/news/detail",
+    "pages/signup/index",
+    "pages/signup/list",
+    "pages/study/index",
+    "pages/login/index",
+    "pages/about/index",
+    "pages/live/index",
+    "pages/live/detail",
+    "pages/message/index",
+    "pages/marketing/index",
+    "pages/marketing/distribute",
+    "pages/marketing/groupon",
+    "pages/marketing/coupon",
+    "pages/marketing/poster",
+    "pages/admin/import"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "云南自修学校",
+    "backgroundColor": "#F4F6FA",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#98A0AE",
+    "selectedColor": "#2350D8",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页", "iconPath": "assets/tab/home.png", "selectedIconPath": "assets/tab/home-on.png" },
+      { "pagePath": "pages/business/index", "text": "业务", "iconPath": "assets/tab/grid.png", "selectedIconPath": "assets/tab/grid-on.png" },
+      { "pagePath": "pages/quiz/index", "text": "刷题", "iconPath": "assets/tab/quiz.png", "selectedIconPath": "assets/tab/quiz-on.png" },
+      { "pagePath": "pages/mine/index", "text": "我的", "iconPath": "assets/tab/user.png", "selectedIconPath": "assets/tab/user-on.png" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

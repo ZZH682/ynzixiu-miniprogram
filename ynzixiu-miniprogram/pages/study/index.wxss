@@ -1,0 +1,16 @@
+.summary { display: flex; flex-direction: column; padding: 40rpx 32rpx 28rpx; }
+.summary-num { font-size: 64rpx; font-weight: 800; line-height: 1.1; }
+.summary-all { font-size: 28rpx; font-weight: 500; color: var(--text-3); }
+.summary-k { margin-top: 6rpx; font-size: 24rpx; color: var(--text-3); }
+
+.item { margin: 0 32rpx 16rpx; }
+.item-top { display: flex; align-items: center; }
+.item-main { flex: 1; min-width: 0; margin-left: 20rpx; }
+.item-title { font-size: 29rpx; font-weight: 600; }
+.item-meta { font-size: 23rpx; color: var(--text-3); margin-top: 2rpx; }
+.item-progress { display: flex; align-items: center; margin-top: 24rpx; }
+.bar { flex: 1; height: 10rpx; border-radius: 10rpx; background: var(--line); overflow: hidden; }
+.bar-in { height: 100%; border-radius: 10rpx; background: var(--brand); }
+.bar-in.full { background: var(--good); }
+.item-pct { width: 120rpx; text-align: right; font-size: 23rpx; color: var(--text-2); }
+.empty-link { margin-top: 16rpx; color: var(--brand); }

@@ -1,0 +1,40 @@
+<view class="page">
+  <view class="card sub-card">
+    <view class="sub-head">
+      <view class="sub-title">消息推送</view>
+      <view class="switch {{subscribeOn ? 'on' : ''}}" bindtap="subscribe">
+        <view class="switch-dot"></view>
+      </view>
+    </view>
+    <view class="sub-tags">
+      <text class="tag tag-brand">小程序订阅消息</text>
+      <text class="tag tag-brand">公众号模板消息</text>
+      <text class="tag tag-brand">短信</text>
+    </view>
+    <view class="sub-desc">直播开播提醒、课程更新、报名回访、优惠券到期等通知，正式版通过上述通道下发（演示）。</view>
+  </view>
+
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">消息列表</text>
+      <text class="section-more" bindtap="markAll">全部已读</text>
+    </view>
+    <view class="card msg-list">
+      <view class="msg" wx:for="{{list}}" wx:key="id" hover-class="btn-hover" bindtap="open" data-id="{{item.id}}">
+        <view class="msg-icon" style="background:{{item.tint}};color:{{item.color}}">{{item.char}}</view>
+        <view class="msg-main">
+          <view class="msg-title-row">
+            <text class="msg-title">{{item.title}}</text>
+            <text wx:if="{{!item.read}}" class="msg-dot"></text>
+          </view>
+          <view class="msg-summary clamp2">{{item.summary}}</view>
+          <view class="msg-time">{{item.time}}</view>
+        </view>
+        <text class="row-arrow">›</text>
+      </view>
+      <view wx:if="{{!list.length}}" class="empty">暂无消息</view>
+    </view>
+  </view>
+
+  <view class="demo-note">演示版本 · 消息为示例，正式版由服务端按模板下发</view>
+</view>

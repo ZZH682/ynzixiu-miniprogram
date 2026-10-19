@@ -1,0 +1,15 @@
+<view class="intro">
+  <text class="intro-title">课程推广海报</text>
+  <text class="intro-sub">生成专属海报，转发到朋友圈 / 群，好友扫码报名即返 10% 佣金</text>
+</view>
+
+<view class="poster-wrap">
+  <canvas canvas-id="poster" class="poster-canvas"></canvas>
+</view>
+
+<view class="actions">
+  <view class="btn btn-primary" hover-class="btn-hover" bindtap="save">保存海报到相册</view>
+  <button class="btn btn-ghost share-btn" hover-class="btn-hover" open-type="share">转发给好友</button>
+</view>
+
+<view class="demo-note">演示版本 · 二维码为占位，正式版生成专属推广码并绑定推荐关系</view>

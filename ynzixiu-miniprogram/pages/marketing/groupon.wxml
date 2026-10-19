@@ -1,0 +1,55 @@
+<view class="section">
+  <view class="section-head">
+    <text class="section-title">进行中的团</text>
+    <text class="section-more" bindtap="open">我也要开团</text>
+  </view>
+
+  <view class="card group" wx:for="{{list}}" wx:key="id">
+    <view class="group-head">
+      <view class="group-cover" style="background:{{item.tint}};color:{{item.color}}">{{item.char}}</view>
+      <view class="group-main">
+        <view class="group-title clamp2">{{item.title}}</view>
+        <view class="group-price">
+          <text class="price big"><text class="price-unit">¥</text>{{item.groupText}}</text>
+          <text class="price-orig">¥{{item.originText}}</text>
+          <text class="group-save">省 ¥{{item.saveText}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="group-progress">
+      <view class="group-progress-text">{{item.joined}}/{{item.need}} 人已参团 · 还差 {{item.need - item.joined}} 人 · {{item.endText}}</view>
+      <view class="progress-bar"><view class="progress-in" style="width:{{item.percent}}%"></view></view>
+    </view>
+    <view class="group-foot">
+      <text class="group-leader">团长 {{item.leader}}</text>
+      <view class="btn btn-primary group-btn" hover-class="btn-hover" bindtap="join" data-id="{{item.id}}">去参团</view>
+    </view>
+  </view>
+  <view wx:if="{{!list.length}}" class="empty">暂无拼团活动</view>
+</view>
+
+<view wx:if="{{myGroups.length}}" class="section">
+  <view class="section-head">
+    <text class="section-title">我发起的团</text>
+  </view>
+  <view class="card team-list">
+    <view class="team" wx:for="{{myGroups}}" wx:key="id">
+      <view class="team-main">
+        <view class="team-name clamp2">{{item.title}}</view>
+        <view class="team-meta">团号 {{item.id}} · {{item.joined}}/{{item.need}} 人 · {{item.timeText}}</view>
+      </view>
+      <view class="team-side">
+        <text class="tag tag-warm">{{item.status}}</text>
+        <text class="team-share" bindtap="shareGroup" data-id="{{item.id}}">邀请</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="card tip">
+  <view class="tip-title">拼团规则</view>
+  <view class="tip-text">· 开团后 48 小时内满员即成团，享团购价；未成团自动退款。</view>
+  <view class="tip-text">· 参团需先登录并完成课程报名（演示环境不产生真实扣款）。</view>
+</view>
+
+<view class="demo-note">演示版本 · 拼团为示例</view>

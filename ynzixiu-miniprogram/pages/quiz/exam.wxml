@@ -1,0 +1,44 @@
+<view class="top">
+  <view class="top-row">
+    <text class="top-title">{{title}}</text>
+    <text wx:if="{{mode === 'mock'}}" class="timer num {{hurry ? 'hurry' : ''}}">{{leftText}}</text>
+    <text wx:else class="top-count num">{{idx + 1}} / {{total}}</text>
+  </view>
+  <view class="bar"><view class="bar-in" style="width:{{(idx + 1) / total * 100}}%"></view></view>
+</view>
+
+<view class="q card" wx:if="{{cur}}">
+  <view class="q-head">
+    <text class="tag tag-brand">单选题</text>
+    <text wx:if="{{mode === 'mock'}}" class="q-no num">第 {{idx + 1}} 题 · 共 {{total}} 题</text>
+  </view>
+  <view class="q-stem">{{cur.stem}}</view>
+
+  <view class="opt {{item.state}}" wx:for="{{cur.opts}}" wx:key="key" hover-class="{{cur.reveal ? '' : 'btn-hover'}}" bindtap="pick" data-key="{{item.key}}">
+    <text class="opt-key">{{item.key}}</text>
+    <text class="opt-text">{{item.text}}</text>
+  </view>
+
+  <view wx:if="{{cur.reveal}}" class="ana {{cur.isRight ? 'ok' : 'no'}}">
+    <view class="ana-head">{{cur.isRight ? '回答正确' : '回答错误，正确答案 ' + cur.answer}}</view>
+    <view class="ana-text">{{cur.analysis}}</view>
+    <view wx:if="{{!cur.isRight}}" class="ana-note">已加入错题本</view>
+  </view>
+</view>
+
+<view class="sheet card">
+  <view class="sheet-head">
+    <text>答题卡</text>
+    <text class="sheet-count num">已答 {{answeredCount}} / {{total}}</text>
+  </view>
+  <view class="dots">
+    <view class="dot {{item.s}} {{item.now ? 'now' : ''}}" wx:for="{{sheet}}" wx:key="no" bindtap="jump" data-i="{{index}}">{{item.no}}</view>
+  </view>
+</view>
+
+<view class="bottom-space"></view>
+<view class="bottom-bar">
+  <view class="btn btn-line nav-btn" hover-class="btn-hover" bindtap="prev">上一题</view>
+  <view wx:if="{{idx === total - 1}}" class="btn btn-primary nav-main" hover-class="btn-hover" bindtap="submit">{{mode === 'mock' ? '交卷' : '查看结果'}}</view>
+  <view wx:else class="btn btn-primary nav-main" hover-class="btn-hover" bindtap="next">下一题</view>
+</view>

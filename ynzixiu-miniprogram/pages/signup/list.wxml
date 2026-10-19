@@ -1,0 +1,19 @@
+<block wx:if="{{list.length}}">
+  <view class="card item" wx:for="{{list}}" wx:key="id">
+    <view class="item-head">
+      <text class="item-biz">{{item.bname}}</text>
+      <text class="tag tag-warm status">{{item.status}}</text>
+    </view>
+    <view class="item-line"><text class="item-label">联系人</text>{{item.name}}<text class="num phone">{{item.phoneText}}</text></view>
+    <view class="item-line" wx:if="{{item.extra}}"><text class="item-label">情况</text>{{item.extra}}</view>
+    <view class="item-line" wx:if="{{item.note}}"><text class="item-label">备注</text><text class="item-note">{{item.note}}</text></view>
+    <view class="item-foot num">提交于 {{item.timeText}}</view>
+  </view>
+  <view class="demo-note">老师会在 1 个工作日内电话联系你</view>
+</block>
+
+<view class="empty" wx:else>
+  <view class="empty-title">还没有预约记录</view>
+  <view>预约后，老师会电话联系你做一对一规划</view>
+  <view class="btn btn-ghost empty-btn" hover-class="btn-hover" bindtap="goSignup">去预约规划</view>
+</view>

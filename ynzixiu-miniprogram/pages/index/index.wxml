@@ -1,0 +1,129 @@
+<import src="/templates/course.wxml" />
+
+<view class="top" style="padding-top:{{navTop}}px">
+  <view class="brand-row" style="height:{{navH}}px;padding-right:{{capsule}}px">
+    <view class="logo">自修</view>
+    <text class="brand-name">云南自修学校</text>
+  </view>
+  <view class="hero">
+    <text class="hero-title">从学历提升到上岸\n一路有老师带着走</text>
+    <text class="hero-sub">成人学历 · 自考 · 专升本 · 公考 · 考研 · 留学</text>
+  </view>
+  <view class="search" hover-class="btn-hover" bindtap="goSearch">
+    <view class="search-icon"></view>
+    <text>搜索课程，比如“专升本”</text>
+  </view>
+</view>
+
+<swiper class="banners" circular autoplay interval="5000" previous-margin="32rpx" next-margin="72rpx">
+  <swiper-item wx:for="{{banners}}" wx:key="id">
+    <view class="banner banner-{{item.theme}}" bindtap="onBanner" data-i="{{index}}">
+      <text class="banner-kicker">{{item.kicker}}</text>
+      <text class="banner-title">{{item.title}}</text>
+      <view class="banner-action">{{item.action}}<text class="banner-arrow">→</text></view>
+    </view>
+  </swiper-item>
+</swiper>
+
+<view class="section">
+  <view class="section-head">
+    <text class="section-title">六大业务</text>
+  </view>
+  <view class="biz-grid">
+    <view class="biz" wx:for="{{businesses}}" wx:key="id" hover-class="btn-hover" bindtap="goBusiness" data-id="{{item.id}}">
+      <view class="mark" style="background:{{item.tint}};color:{{item.color}}">{{item.char}}</view>
+      <text class="biz-name">{{item.name}}</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{liveNow || upcomings.length}}" class="section">
+  <view class="section-head">
+    <text class="section-title">直播课堂</text>
+    <text class="section-more" bindtap="goLiveList">全部直播 ›</text>
+  </view>
+  <view wx:if="{{liveNow}}" class="card home-live" style="background:{{liveNow.tint}};color:{{liveNow.color}}" hover-class="btn-hover" bindtap="goLive" data-id="{{liveNow.id}}">
+    <view class="home-live-top">
+      <view class="live-dot"></view>
+      <text>LIVE · 正在直播</text>
+    </view>
+    <view class="home-live-title clamp2">{{liveNow.title}}</view>
+    <view class="home-live-meta">{{liveNow.teacher}} · {{liveNow.startText}}</view>
+  </view>
+  <view class="card home-live-list" wx:if="{{upcomings.length}}">
+    <view class="home-live-row" wx:for="{{upcomings}}" wx:key="id" hover-class="btn-hover" bindtap="goLive" data-id="{{item.id}}">
+      <view class="home-live-main">
+        <view class="home-live-row-title ellipsis">{{item.title}}</view>
+        <view class="home-live-row-meta">{{item.teacher}}</view>
+      </view>
+      <text class="tag tag-warm">{{item.startText}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head">
+    <text class="section-title">政策头条</text>
+    <text class="section-more" bindtap="goNewsList">全部 ›</text>
+  </view>
+  <view class="card news-card">
+    <view class="news-row" wx:for="{{topNews}}" wx:key="id" hover-class="btn-hover" bindtap="goNews" data-id="{{item.id}}">
+      <view class="news-main">
+        <view class="news-title ellipsis">{{item.title}}</view>
+        <view class="news-meta"><text class="tag tag-brand">{{item.category}}</text>{{item.date}}</view>
+      </view>
+      <text class="row-arrow">›</text>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head">
+    <text class="section-title">热门课程</text>
+    <text class="section-more" bindtap="goCourseList">全部课程 ›</text>
+  </view>
+  <view class="card course-card">
+    <block wx:for="{{hotCourses}}" wx:key="id">
+      <template is="course-row" data="{{c: item}}" />
+    </block>
+  </view>
+</view>
+
+<view class="section">
+  <view class="section-head">
+    <text class="section-title">营销活动</text>
+    <text class="section-more" bindtap="goMarket" data-to="/pages/marketing/index">活动中心 ›</text>
+  </view>
+  <view class="market-grid">
+    <view class="market" wx:for="{{marketEntries}}" wx:key="name" hover-class="btn-hover" bindtap="goMarket" data-to="{{item.to}}">
+      <view class="mark mark-sm" style="background:{{item.tint}};color:{{item.color}}">{{item.char}}</view>
+      <text class="market-name">{{item.name}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="section stories-section">
+  <view class="section-head">
+    <text class="section-title">上岸喜报</text>
+    <text class="section-more">示例</text>
+  </view>
+</view>
+<scroll-view class="stories" scroll-x enhanced show-scrollbar="{{false}}">
+  <view class="story" wx:for="{{stories}}" wx:key="id">
+    <view class="story-result" style="color:{{item.color}}">{{item.result}}</view>
+    <view class="story-quote">“{{item.quote}}”</view>
+    <view class="story-who">{{item.name}} · {{item.tag}}</view>
+  </view>
+  <view class="story-end"></view>
+</scroll-view>
+
+<view class="footer">
+  <view class="footer-name">云南自修学校</view>
+  <view class="footer-line">咨询热线 {{phone}}</view>
+  <view class="footer-link" bindtap="goAbout">关于我们 · 办学资质 ›</view>
+</view>
+
+<view class="fab" hover-class="btn-hover" bindtap="callPhone">
+  <view class="fab-dot"></view>
+  <text>电话咨询</text>
+</view>

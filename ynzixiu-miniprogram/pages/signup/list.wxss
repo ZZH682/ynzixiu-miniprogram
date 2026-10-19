@@ -1,0 +1,12 @@
+page { padding-top: 24rpx; }
+.item { margin: 0 32rpx 20rpx; }
+.item-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16rpx; }
+.item-biz { font-size: 31rpx; font-weight: 600; }
+.status { margin-right: 0; }
+.item-line { display: flex; font-size: 26rpx; padding: 6rpx 0; }
+.item-label { width: 112rpx; flex-shrink: 0; color: var(--text-3); }
+.phone { margin-left: 16rpx; color: var(--text-2); }
+.item-note { flex: 1; min-width: 0; color: var(--text-2); }
+.item-foot { margin-top: 16rpx; padding-top: 16rpx; border-top: 1rpx solid var(--line); font-size: 22rpx; color: var(--text-3); }
+
+.empty-btn { width: 320rpx; margin: 40rpx auto 0; }

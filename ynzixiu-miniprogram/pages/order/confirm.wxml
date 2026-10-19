@@ -1,0 +1,66 @@
+<view class="card block course">
+  <view class="cover-sm" style="background:{{c.tint}};color:{{c.color}}">{{c.char}}</view>
+  <view class="course-main">
+    <view class="course-title clamp2">{{c.title}}</view>
+    <view class="course-meta">{{c.bname}} · {{c.typeText}}</view>
+  </view>
+</view>
+
+<view class="card block">
+  <view class="label">报名学员</view>
+  <view class="value num">{{phoneText}}</view>
+</view>
+
+<view class="card block" wx:if="{{canSplit}}">
+  <view class="label">付款方式</view>
+  <view class="opt {{plan === 'full' ? 'on' : ''}}" data-v="full" bindtap="setPlan">
+    <view class="radio"></view>
+    <view class="opt-main">
+      <view class="opt-title">一次付清</view>
+      <view class="opt-sub">¥{{c.priceText}}</view>
+    </view>
+  </view>
+  <view class="opt {{plan === 'split' ? 'on' : ''}}" data-v="split" bindtap="setPlan">
+    <view class="radio"></view>
+    <view class="opt-main">
+      <view class="opt-title">首付 + 尾款</view>
+      <view class="opt-sub">今天付 ¥{{depositText}}，开课前付尾款 ¥{{balanceText}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="card block" wx:if="{{coupons.length}}">
+  <view class="label">优惠券</view>
+  <view class="coupon-row" hover-class="btn-hover" bindtap="pickCoupon">
+    <view class="coupon-main">
+      <view class="coupon-text" wx:if="{{coupon}}">{{coupon.name}} · 立减 ¥{{coupon.amountText}}</view>
+      <view class="coupon-text" wx:else>有 {{coupons.length}} 张可用，点击选择</view>
+      <view class="coupon-sub">{{coupon ? coupon.minText : '演示：用券不消耗，可反复演示'}}</view>
+    </view>
+    <text class="row-arrow">›</text>
+  </view>
+</view>
+
+<view class="card block">
+  <view class="label">支付方式</view>
+  <view class="opt {{pay === 'wechat' ? 'on' : ''}}" data-v="wechat" bindtap="setPay">
+    <view class="radio"></view>
+    <view class="opt-main"><view class="opt-title">微信支付</view></view>
+  </view>
+  <view class="opt {{pay === 'alipay' ? 'on' : ''}}" data-v="alipay" bindtap="setPay">
+    <view class="radio"></view>
+    <view class="opt-main"><view class="opt-title">支付宝</view></view>
+  </view>
+</view>
+
+<view class="note" wx:if="{{discountText}}">已用优惠券「{{coupon.name}}」立减 ¥{{discountText}}（演示：不消耗券）</view>
+<view class="note">演示环境：点击支付不会产生真实扣款。支付成功后自动生成电子收据。</view>
+
+<view class="bottom-space"></view>
+<view class="bottom-bar">
+  <view class="total">
+    <text class="total-label">{{plan === 'split' ? '今日应付' : '应付'}}</text>
+    <text class="price total-num"><text class="price-unit">¥</text>{{payNowText}}</text>
+  </view>
+  <view class="btn btn-primary pay-btn {{paying ? 'disabled' : ''}}" hover-class="btn-hover" bindtap="submit">确认支付</view>
+</view>

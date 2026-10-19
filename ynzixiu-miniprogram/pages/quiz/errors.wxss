@@ -1,0 +1,15 @@
+.head { padding: 32rpx 32rpx 20rpx; display: flex; align-items: baseline; justify-content: space-between; }
+.head-title { font-size: 34rpx; font-weight: 700; }
+.head-sub { font-size: 23rpx; color: var(--text-3); }
+
+.item { margin: 0 32rpx 16rpx; }
+.item-top { display: flex; align-items: center; justify-content: space-between; }
+.item-remove { font-size: 24rpx; color: var(--text-3); }
+.item-stem { margin-top: 14rpx; font-size: 29rpx; line-height: 1.6; font-weight: 500; }
+.item-detail { margin-top: 16rpx; padding: 20rpx 24rpx; background: var(--bg); border-radius: 14rpx; font-size: 25rpx; color: var(--text-2); line-height: 1.7; }
+.item-ana { margin-top: 6rpx; color: var(--text-3); }
+.bad { color: var(--bad); font-weight: 600; }
+.good { color: var(--good); font-weight: 600; }
+
+.full { flex: 1; }
+.empty-link { margin-top: 16rpx; color: var(--brand); }

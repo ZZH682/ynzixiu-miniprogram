@@ -1,0 +1,29 @@
+.head { padding: 48rpx 32rpx 32rpx; }
+.head-name { font-size: 44rpx; font-weight: 700; }
+.head-sub { margin-top: 8rpx; font-size: 26rpx; color: var(--text-2); }
+
+.intro { font-size: 28rpx; line-height: 1.8; text-align: justify; }
+
+.list-card { padding-top: 4rpx; padding-bottom: 4rpx; }
+.biz-main { margin-left: 24rpx; }
+.biz-name { font-size: 29rpx; font-weight: 600; }
+.biz-summary { margin-top: 4rpx; font-size: 24rpx; color: var(--text-3); }
+
+.certs { display: flex; justify-content: space-between; }
+.cert { width: calc((100% - 40rpx) / 3); }
+.cert-box {
+  height: 220rpx;
+  border-radius: 16rpx;
+  border: 2rpx dashed var(--text-3);
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  color: var(--text-3);
+}
+.cert-name { margin-top: 12rpx; font-size: 24rpx; color: var(--text-2); text-align: center; }
+
+.contact-label { font-size: 24rpx; color: var(--text-3); }
+.contact-value { margin-top: 4rpx; font-size: 34rpx; font-weight: 600; letter-spacing: 1rpx; }
+.call { font-size: 26rpx; color: var(--brand); padding: 10rpx 28rpx; border-radius: 999rpx; background: var(--brand-weak); }

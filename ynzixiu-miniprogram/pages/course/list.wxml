@@ -1,0 +1,21 @@
+<import src="/templates/course.wxml" />
+
+<view class="sticky">
+  <view class="search">
+    <input class="search-input" placeholder="搜索课程、老师" placeholder-class="placeholder" value="{{kw}}" focus="{{focus}}" confirm-type="search" bindinput="onInput" />
+    <text wx:if="{{kw}}" class="search-clear" bindtap="clearKw">清除</text>
+  </view>
+  <scroll-view class="chips" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="chip {{bid === item.id ? 'on' : ''}}" wx:for="{{tabs}}" wx:key="id" bindtap="onTab" data-id="{{item.id}}">{{item.name}}</view>
+  </scroll-view>
+</view>
+
+<view class="card list" wx:if="{{list.length}}">
+  <block wx:for="{{list}}" wx:key="id">
+    <template is="course-row" data="{{c: item}}" />
+  </block>
+</view>
+<view class="empty" wx:else>
+  <view class="empty-title">没有找到相关课程</view>
+  <view>换个关键词，或直接电话咨询老师</view>
+</view>

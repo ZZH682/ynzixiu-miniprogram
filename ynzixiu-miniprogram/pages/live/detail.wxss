@@ -1,0 +1,48 @@
+.hero {
+  position: relative;
+  margin: 24rpx 32rpx 20rpx;
+  border-radius: 28rpx;
+  padding: 36rpx 36rpx 40rpx;
+  overflow: hidden;
+}
+.hero-status { display: flex; align-items: center; font-size: 22rpx; font-weight: 600; letter-spacing: 3rpx; opacity: 0.75; }
+.live-dot { width: 14rpx; height: 14rpx; border-radius: 50%; background: #E5522A; margin-right: 12rpx; }
+.hero-char {
+  position: absolute; right: -16rpx; bottom: -60rpx;
+  font-size: 260rpx; font-weight: 800; opacity: 0.12; line-height: 1;
+}
+.hero-title { display: block; margin-top: 28rpx; font-size: 40rpx; font-weight: 700; line-height: 1.4; letter-spacing: 1rpx; }
+.hero-sub { display: block; margin-top: 14rpx; font-size: 25rpx; opacity: 0.72; }
+
+.panel { margin: 0 32rpx 20rpx; }
+.panel-title { font-size: 30rpx; font-weight: 600; margin-bottom: 16rpx; }
+.panel-text { font-size: 27rpx; color: var(--text-2); line-height: 1.7; }
+
+.hl { display: flex; align-items: flex-start; margin-top: 22rpx; font-size: 27rpx; color: var(--ink); }
+.hl-no {
+  width: 36rpx; height: 36rpx; line-height: 36rpx; text-align: center;
+  border-radius: 50%; background: var(--brand-weak); color: var(--brand);
+  font-size: 22rpx; font-weight: 600; margin-right: 16rpx; flex-shrink: 0;
+}
+
+.remind-row { margin-top: 8rpx; }
+.remind-title { font-size: 29rpx; font-weight: 500; }
+.remind-sub { margin-top: 6rpx; font-size: 23rpx; color: var(--text-3); }
+.switch {
+  width: 88rpx; height: 52rpx; border-radius: 999rpx;
+  background: #D9DEE8; position: relative; transition: background 0.2s;
+}
+.switch.on { background: var(--brand); }
+.switch-dot {
+  position: absolute; left: 6rpx; top: 6rpx;
+  width: 40rpx; height: 40rpx; border-radius: 50%; background: #fff;
+  transition: left 0.2s;
+}
+.switch.on .switch-dot { left: 42rpx; }
+
+.bar-icon-dot {
+  width: 14rpx; height: 14rpx; border-radius: 50%;
+  background: var(--good); margin: 0 auto 6rpx;
+}
+.bar-icon { text-align: center; font-size: 22rpx; color: var(--text-2); width: 96rpx; }
+.bar-main { flex: 1; margin-left: 24rpx; }

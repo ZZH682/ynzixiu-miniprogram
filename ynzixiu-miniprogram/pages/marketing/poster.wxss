@@ -1,0 +1,26 @@
+.intro { padding: 32rpx 40rpx 8rpx; }
+.intro-title { display: block; font-size: 34rpx; font-weight: 700; }
+.intro-sub { display: block; margin-top: 10rpx; font-size: 24rpx; color: var(--text-3); line-height: 1.6; }
+
+.poster-wrap { display: flex; justify-content: center; padding: 32rpx 0 8rpx; }
+.poster-canvas {
+  width: 560rpx;
+  height: 840rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 16rpx 48rpx rgba(19, 33, 59, 0.18);
+}
+
+.actions { padding: 32rpx 64rpx 8rpx; }
+.actions .btn { height: 84rpx; line-height: 84rpx; font-size: 29rpx; }
+.actions .btn-primary { margin-bottom: 20rpx; }
+.share-btn {
+  background: var(--brand-weak);
+  color: var(--brand);
+  border-radius: 999rpx;
+  text-align: center;
+  font-weight: 600;
+  line-height: 84rpx;
+  width: 100%;
+  padding: 0;
+}
+.share-btn::after { border: none; }

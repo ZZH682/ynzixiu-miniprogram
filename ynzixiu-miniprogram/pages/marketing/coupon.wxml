@@ -1,0 +1,40 @@
+<view class="chips tabs">
+  <view class="chip {{tab === 'center' ? 'on' : ''}}" data-t="center" bindtap="setTab">领券中心</view>
+  <view class="chip {{tab === 'mine' ? 'on' : ''}}" data-t="mine" bindtap="setTab">我的优惠券 · {{mineList.length}}</view>
+</view>
+
+<view wx:if="{{tab === 'center'}}" class="section">
+  <view class="card ticket" wx:for="{{centerList}}" wx:key="id">
+    <view class="ticket-left" style="background:{{item.color}}">
+      <text class="ticket-amount num"><text class="ticket-unit">¥</text>{{item.amountText}}</text>
+      <text class="ticket-min">{{item.minText}}</text>
+    </view>
+    <view class="ticket-main">
+      <view class="ticket-name">{{item.name}}</view>
+      <view class="ticket-desc">{{item.desc}}</view>
+      <view class="ticket-expire">{{item.expireText}}</view>
+    </view>
+    <view class="ticket-btn {{item.got ? 'got' : ''}}" hover-class="btn-hover" bindtap="gain" data-id="{{item.id}}">{{item.got ? '已领取' : '领取'}}</view>
+  </view>
+</view>
+
+<view wx:else class="section">
+  <view class="card ticket" wx:for="{{mineList}}" wx:key="couponId">
+    <view class="ticket-left" style="background:#2350D8">
+      <text class="ticket-amount num"><text class="ticket-unit">¥</text>{{item.amountText}}</text>
+      <text class="ticket-min">{{item.minText}}</text>
+    </view>
+    <view class="ticket-main">
+      <view class="ticket-name">{{item.name}}</view>
+      <view class="ticket-desc">{{item.gotText}}</view>
+      <view class="ticket-expire">{{item.expireText}}</view>
+    </view>
+    <view class="ticket-btn" hover-class="btn-hover" bindtap="useCoupon" data-id="{{item.couponId}}">去使用</view>
+  </view>
+  <view wx:if="{{!mineList.length}}" class="empty">
+    <view class="empty-title">还没有优惠券</view>
+    去「领券中心」领取，报名时自动抵扣
+  </view>
+</view>
+
+<view class="demo-note">演示版本 · 优惠券领取后存本机；用券不消耗，方便反复演示</view>

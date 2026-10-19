@@ -1,0 +1,29 @@
+.page { padding: 24rpx 0 20rpx; }
+
+/* 直播中大卡 */
+.live-banner { display: flex; flex-direction: column; }
+.live-banner-top { display: flex; align-items: center; font-size: 22rpx; font-weight: 600; letter-spacing: 2rpx; }
+.live-dot { width: 14rpx; height: 14rpx; border-radius: 50%; background: #E5522A; margin-right: 12rpx; }
+.live-banner-title { margin-top: 24rpx; font-size: 36rpx; font-weight: 700; line-height: 1.4; }
+.live-banner-meta { margin-top: 16rpx; font-size: 24rpx; opacity: 0.7; }
+
+/* 列表行 */
+.live-list { padding-top: 8rpx; padding-bottom: 8rpx; }
+.live-row { display: flex; align-items: center; padding: 24rpx 0; border-bottom: 1rpx solid var(--line); }
+.live-row:last-child { border-bottom: none; }
+.live-cover {
+  width: 120rpx; height: 90rpx; border-radius: 16rpx; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.live-cover-char { font-size: 40rpx; font-weight: 800; }
+.live-cover-tag {
+  position: absolute; left: 0; top: 0;
+  font-size: 18rpx; font-weight: 600;
+  padding: 2rpx 10rpx; border-radius: 16rpx 0 12rpx 0;
+  background: rgba(0, 0, 0, 0.18); color: #fff;
+}
+.live-main { flex: 1; min-width: 0; margin-left: 22rpx; }
+.live-title { font-size: 29rpx; font-weight: 600; line-height: 1.4; }
+.live-meta { margin-top: 10rpx; font-size: 23rpx; color: var(--text-3); }
+.live-side { flex-shrink: 0; margin-left: 16rpx; }
+.live-side .tag { margin-right: 0; }

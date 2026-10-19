@@ -1,0 +1,60 @@
+<block wx:if="{{!done}}">
+  <view class="intro">
+    <view class="intro-title">免费预约一对一规划</view>
+    <view class="intro-sub">留下联系方式，老师结合你的学历和目标给出建议，无需注册登录</view>
+  </view>
+
+  <view class="card block">
+    <view class="field">
+      <view class="field-label">意向业务<text class="req">*</text></view>
+      <view class="biz-grid">
+        <view class="biz {{bid === item.id ? 'on' : ''}}" wx:for="{{businesses}}" wx:key="id" bindtap="pickBiz" data-id="{{item.id}}">
+          <view class="biz-dot" style="background:{{item.color}}"></view>
+          <view class="biz-name ellipsis">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card block">
+    <view class="field">
+      <view class="field-label">姓名<text class="req">*</text></view>
+      <input class="input" placeholder="怎么称呼你" placeholder-class="placeholder" maxlength="20" value="{{name}}" bindinput="onName" />
+    </view>
+    <view class="field">
+      <view class="field-label">手机号<text class="req">*</text></view>
+      <input class="input num" type="number" placeholder="老师会通过这个号码联系你" placeholder-class="placeholder" maxlength="11" value="{{phone}}" bindinput="onPhone" />
+    </view>
+    <view class="field">
+      <view class="field-label">当前学历</view>
+      <view class="picks">
+        <view class="pick {{edu === item ? 'on' : ''}}" wx:for="{{edus}}" wx:key="*this" bindtap="pickEdu" data-v="{{item}}">{{item}}</view>
+      </view>
+    </view>
+    <view class="field">
+      <view class="field-label">方便联系时间</view>
+      <view class="picks">
+        <view class="pick {{time === item ? 'on' : ''}}" wx:for="{{times}}" wx:key="*this" bindtap="pickTime" data-v="{{item}}">{{item}}</view>
+      </view>
+    </view>
+    <view class="field">
+      <view class="field-label">备注</view>
+      <textarea class="textarea" placeholder="想了解的问题，可不填" placeholder-class="placeholder" maxlength="200" value="{{note}}" bindinput="onNote" />
+    </view>
+  </view>
+
+  <view class="note">信息仅用于学校老师回访</view>
+
+  <view class="bottom-space"></view>
+  <view class="bottom-bar">
+    <view class="btn btn-primary submit {{submitting ? 'disabled' : ''}}" hover-class="btn-hover" bindtap="submit">提交预约</view>
+  </view>
+</block>
+
+<view class="success" wx:else>
+  <view class="check"></view>
+  <view class="success-title">已收到预约</view>
+  <view class="success-sub">老师会在 1 个工作日内电话联系你</view>
+  <view class="btn btn-primary success-btn first" hover-class="btn-hover" bindtap="goList">查看我的预约</view>
+  <view class="btn btn-line success-btn" hover-class="btn-hover" bindtap="goHome">返回首页</view>
+</view>
