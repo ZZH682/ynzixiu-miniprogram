@@ -1,0 +1,100 @@
+# ============================================================
+#  云南自修学校 · 生产编排（MySQL 8 + Redis 7 + 单端口 8600 后端）
+#  用法： cp .env.example .env  ->  docker compose up -d --build
+#  首次部署：把 .env 中 DB_INIT_MODE 设为 always 建表灌数据，完成后改回 never。
+#  backend 镜像内已包含 frontend/ 静态资源，无需 nginx / 独立前端服务器。
+# ============================================================
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ynzixiu-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-ynzixiu}
+      MYSQL_USER: ${DB_USER:-ynzixiu}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-ynzixiu}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-ynzixiu_root_pwd}
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      # 仅便于本地直连调试；若与本机 MySQL 冲突，改成 "3307:3306" 即可
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      # $$ 转义：由容器内 shell 展开 MYSQL_ROOT_PASSWORD
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  redis:
+    image: redis:7-alpine
+    container_name: ynzixiu-redis
+    restart: unless-stopped
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+    # 未设密码时纯 redis-server；设了密码则自动加 --requirepass
+    command:
+      - /bin/sh
+      - -c
+      - "exec redis-server --appendonly yes $${REDIS_PASSWORD:+--requirepass $$REDIS_PASSWORD}"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      # 默认等价于 redis-cli ping；设密码时带上 -a
+      test: ["CMD-SHELL", "redis-cli $${REDIS_PASSWORD:+-a $$REDIS_PASSWORD} ping | grep -q PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ynzixiu-server:latest
+    container_name: ynzixiu-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8600:8600"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      SERVER_PORT: "8600"
+      TZ: Asia/Shanghai
+      DB_HOST: mysql
+      DB_PORT: "3306"
+      DB_NAME: ${DB_NAME:-ynzixiu}
+      DB_USER: ${DB_USER:-ynzixiu}
+      DB_PASSWORD: ${DB_PASSWORD:-ynzixiu}
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      # 首次部署设 always 建表灌数据，之后设 never
+      DB_INIT_MODE: ${DB_INIT_MODE:-never}
+      # 与 prod yml 的 ${DB_INIT_MODE:never} 同源；SPRING_SQL_INIT_MODE 是 Spring Boot
+      # 原生 relaxed binding，属性源优先级高于 yml，作为额外保险确保 mode 被覆盖。
+      # 必须与上面的 DB_INIT_MODE 始终同源同值，否则会静默覆盖 yml 占位符。
+      SPRING_SQL_INIT_MODE: ${DB_INIT_MODE:-never}
+      # 默认值均 >= 32 字节，与 application.yml 默认值保持一致
+      JWT_USER_SECRET: ${JWT_USER_SECRET:-ynzixiu-user-secret-key-please-change-in-production-2024}
+      JWT_ADMIN_SECRET: ${JWT_ADMIN_SECRET:-ynzixiu-admin-secret-key-please-change-in-production-2024}
+      JAVA_OPTS: "${JAVA_OPTS:--Xms256m -Xmx512m -Duser.timezone=Asia/Shanghai}"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8600/api/v1/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+
+volumes:
+  mysql-data:
+  redis-data:

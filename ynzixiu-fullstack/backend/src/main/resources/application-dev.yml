@@ -1,0 +1,35 @@
+# 开发环境：H2 内存库（MySQL 兼容模式），无需安装 MySQL 即可跑通全流程
+spring:
+  datasource:
+    # NON_KEYWORDS：H2 的 MySQL 兼容模式把 right/name/char/top/status 等当作保留字，
+    # 而这些列名在 MySQL 生产库上是合法的，这里统一放开。
+    # 注意：SET/ORDER/GROUP 必须保留为 SQL 关键字（UPDATE...SET、ORDER BY、GROUP BY 要用），
+    # 不能放进 NON_KEYWORDS；这些词只作为"表名/列名"出现时由实体 @TableName/@TableField 反引号处理。
+    # 2026-11-04 修复：原配置把 SET/ORDER/GROUP 误列为非关键字，导致所有 UPDATE 语句解析失败、
+    # 登录（markUsed）与拼团定时任务（expireGroups）报 5000。
+    url: jdbc:h2:mem:ynzixiu;MODE=MySQL;NON_KEYWORDS=RIGHT,LEFT,VALUE,KEY,YEAR,MONTH,DAY,HOUR,MINUTE,SECOND,TOP,ROLE,USER,ROW,LEVEL,SIZE,TYPE,NAME,DATE,TIME,TIMESTAMP,END,NULL,CHAR,STATUS,COMMENT,INDEX,PASSWORD,FIRST,LAST,ACTION,CHECK,INTERVAL,RESULT,SOURCE,PATH,VERSION,LANGUAGE,LOCATION,OPTION,OWNER,USED;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ''
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/h2/schema.sql
+      data-locations: classpath:db/h2/data.sql
+      continue-on-error: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+app:
+  datasource:
+    type: h2
+  cache:
+    type: caffeine
+  lock:
+    type: local
+
+logging:
+  level:
+    com.ynzx.server: DEBUG

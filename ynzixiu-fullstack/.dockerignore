@@ -1,0 +1,33 @@
+# ============================================================
+#  Docker 构建上下文裁剪
+#  Dockerfile 只需要：backend/pom.xml、backend/src/、frontend/
+#  其余（编译产物、自带 Maven、IDE、日志、密钥）一律不进上下文
+# ============================================================
+
+# 版本控制 / IDE
+.git
+.gitignore
+.idea
+.vscode
+*.iml
+
+# 构建产物（builder 阶段会自己生成，不复用宿主机 target）
+backend/target/
+
+# 项目自带 Maven（镜像内用 maven:3.9.9，无需复制几十 MB 二进制）
+backend/apache-maven-3.9.9/
+
+# 运行时 / 本地状态
+.workbuddy/
+node_modules/
+*.log
+.env
+.env.*
+!.env.example
+
+# 归档的旧版前端（pom <resources> 已排除，镜像内的 frontend 副本同样不需要）
+frontend/legacy/
+frontend/README.md
+
+# 文档与其它非构建必需文件
+*.md

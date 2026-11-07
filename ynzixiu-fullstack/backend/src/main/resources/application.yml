@@ -1,0 +1,89 @@
+server:
+  port: ${SERVER_PORT:8600}
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+spring:
+  application:
+    name: ynzixiu-server-java
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+  mvc:
+    # 静态资源由 Spring Boot 托管（classpath:/static/，前端在构建时打包进来），
+    # 开启 throw-exception-if-no-handler-found 会让未匹配的静态请求抛异常，故关闭。
+    throw-exception-if-no-handler-found: false
+    static-path-pattern: /**
+  web:
+    resources:
+      add-mappings: true
+      cache:
+        period: 0
+
+mybatis-plus:
+  # SQL 全部为注解式，无 XML mapper，去掉空指向配置
+  type-aliases-package: com.ynzx.server.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    # 生产请改为 org.apache.ibatis.logging.nologging.NoLoggingImpl
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      logic-delete-field: null
+
+app:
+  # 统一前缀
+  api-prefix: /api/v1
+  jwt:
+    # 两个密钥域：用户端 / 管理端，互不通用（对齐原 Node 版安全基线）
+    user-secret: ${JWT_USER_SECRET:ynzixiu-user-secret-key-please-change-in-production-2024}
+    admin-secret: ${JWT_ADMIN_SECRET:ynzixiu-admin-secret-key-please-change-in-production-2024}
+    expire-minutes: ${JWT_EXPIRE_MINUTES:720}
+    admin-expire-minutes: ${JWT_ADMIN_EXPIRE_MINUTES:480}
+    issuer: ynzixiu-server-java
+  sms:
+    # 未接短信商时的演示验证码；生产环境置空并强制走真实通道
+    dev-code: ${SMS_DEV_CODE:123456}
+    ttl-minutes: ${SMS_TTL_MINUTES:5}
+    send-limit-per-minute: ${SMS_SEND_LIMIT:10}
+  rate-limit:
+    enabled: ${RATE_LIMIT_ENABLED:true}
+    requests-per-minute: ${RATE_LIMIT_QPM:300}
+  cache:
+    # redis | caffeine | auto(探测Redis可用性，不可用自动降级)
+    type: ${CACHE_TYPE:auto}
+    default-ttl-seconds: ${CACHE_TTL:600}
+    # 空值缓存过期时间，防缓存穿透
+    null-ttl-seconds: ${CACHE_NULL_TTL:60}
+  lock:
+    # redis | local
+    type: ${LOCK_TYPE:auto}
+    lease-seconds: ${LOCK_LEASE:10}
+    wait-millis: ${LOCK_WAIT:2000}
+  datasource:
+    # mysql | h2 —— 驱动无关，SQL 用标准语法
+    type: ${DB_TYPE:h2}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    root: INFO
+    com.ynzx.server: INFO
+    com.ynzx.server.mapper: DEBUG

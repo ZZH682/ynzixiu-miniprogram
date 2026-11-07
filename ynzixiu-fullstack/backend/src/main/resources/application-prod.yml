@@ -1,0 +1,50 @@
+# 生产环境：MySQL 8 + Redis
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:ynzixiu}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USER:ynzixiu}
+    password: ${DB_PASSWORD:ynzixiu}
+    hikari:
+      # 连接池：最大连接 20，最小空闲 5，超时 30s
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      pool-name: YnzixiuHikariPool
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DB:0}
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          min-idle: 2
+          max-wait: 3000ms
+  sql:
+    init:
+      # 数据库初始化脚本开关（仅首次部署时开启）：
+      #  - 首次部署：设环境变量 DB_INIT_MODE=always，Spring 会依次执行
+      #    classpath:db/mysql/schema.sql（建表）与 classpath:db/mysql/data.sql（灌种子数据），
+      #    启动后即可得到一套可运行的演示数据。
+      #  - 初始化完成后务必改回 never（或删除该变量，使用默认值），
+      #    避免每次启动都重复执行初始化脚本造成重复插入。
+      #  - 注意：schema.sql 内含 DROP TABLE IF EXISTS，长期保持 always 会重建表并清空数据。
+      mode: ${DB_INIT_MODE:never}
+      schema-locations: classpath:db/mysql/schema.sql
+      data-locations: classpath:db/mysql/data.sql
+      continue-on-error: false
+      encoding: UTF-8
+
+app:
+  datasource:
+    type: mysql
+  cache:
+    type: redis
+  lock:
+    type: redis
